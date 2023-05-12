@@ -6,6 +6,8 @@ public class PilasyColas {
         JOptionPane.showMessageDialog(null, "Conectados");
         while (true) {
             String bd = "";
+
+            jshdbjdsbjdshhsj
     }
 }
 }
