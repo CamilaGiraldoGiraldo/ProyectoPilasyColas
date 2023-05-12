@@ -8,5 +8,9 @@ public class PilasyColas {
             boolean var = true;
             int otro;
         }
+        while(true){
+            int t = 34;
+            boolean f = false;
+        };
     }
 }
