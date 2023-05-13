@@ -8,10 +8,6 @@ public class Pila {
             this.Vector = new int[n];
         }
     
-        public void setVector(int[] Vector) {
-            this.Vector = Vector;
-        }
-    
         public boolean PilaVacia() {
             if (Tope == -1) {
                 return true;
