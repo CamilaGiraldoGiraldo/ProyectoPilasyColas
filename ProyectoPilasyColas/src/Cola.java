@@ -1,6 +1,9 @@
+import javax.swing.JOptionPane;
+
 public class Cola {
     // Atributos
     int Limite, Tope, Vector[];
+
     public Cola(int n)
     {
         this.Limite = n - 1;
@@ -8,6 +11,16 @@ public class Cola {
         this.Vector = new int[n];
     }
 
+    public boolean ColaVacia()
+    {
+        if (Tope == -1)
+        {
+            return true;
+        }else
+        {
+            return false;
+        }
+    }
     public boolean ColaLLena() {
         boolean B = false;
         if (Tope == Limite) {
@@ -22,8 +35,8 @@ public class Cola {
         Vector[Tope] = n;
     }
 
-    int Desacolar ()
-    {
+    int Desacolar (){
+    
         int aux = Vector [0];
         int i = 1;
         while (i != Tope)
@@ -34,7 +47,10 @@ public class Cola {
         Tope--;
         return Vector[0];
     }
+    void Mostrar_Cola()
+    {
+        String Cola = " ";
+        
+        desacolar
     
-
-
-}
+    }

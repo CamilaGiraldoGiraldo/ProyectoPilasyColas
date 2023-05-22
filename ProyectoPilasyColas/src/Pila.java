@@ -2,6 +2,7 @@ public class Pila {
         //Atributos
         int Limite, Tope, Vector[];
 
+
         public Pila(int n) {
             this.Limite = n - 1;
             this.Tope = -1;
@@ -48,7 +49,7 @@ public class Pila {
             int Dato = 0;
             while (PilaVacia() != true) {
                 Dato = Desapilar();
-                s = s + "|" + Dato + "|\n";
+                s = s + "|" + Dato + "|\n ";
                 aux.Apilar(Dato);
             }
             Pasar_datos(aux);
