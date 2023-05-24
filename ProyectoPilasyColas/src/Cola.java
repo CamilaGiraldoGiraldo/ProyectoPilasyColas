@@ -1,15 +1,13 @@
+import javax.swing.JOptionPane;
+
 public class Cola {
     // Atributos
     int Limite, Tope, Vector[];
-
-    public Cola(int n) {
+    public Cola(int n)
+    {
         this.Limite = n - 1;
         this.Tope = -1;
         this.Vector = new int[n];
-    }
-
-    public int getTope() {
-        return Tope;
     }
 
     public boolean ColaLLena() {
@@ -20,49 +18,46 @@ public class Cola {
         return B;
     }
 
-    public boolean ColaVacia() {
-        if (Tope == -1) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    void Encolar(int n) {
+    void Acolar(int n)
+    {
         Tope++;
         Vector[Tope] = n;
     }
 
-    int Desacolar() {
-        int aux = Vector[0];
-        if (Tope != 0) {
-            int i = 1;
-            while (i != Tope) {
-                Vector[i - 1] = Vector[i];
-                i++;
-            }
+    int Desacolar ()
+    {
+        int aux = Vector [0];
+        int i = 1;
+        while (i != Tope)
+        {
+            Vector [i-1]=Vector[i];
+            i++;
         }
         Tope--;
-        return Vector[0];
+        return aux;
     }
-
-    void PasarDatos(Cola aux) {
+    void PasarDatos (Cola aux)
+    {
         int Auxiliar;
-        while (aux.ColaVacia() == false) {
+        while (aux.ColaVacia() == false){
             Auxiliar = aux.Desacolar();
             Encolar(Auxiliar);
         }
     }
-
-    public String MostrarCola(Cola aux) {
+    public String Mostrar_Cola(){
+        Cola Aux = new Cola(Limite + 1);
         String s = " ";
         int Dato = 0;
-        while (ColaVacia() != true) {
+        while (ColaVacia() != true)
+        {
             Dato = Desacolar();
-            s = s + "|" + Dato + "|\n";
-            aux.Encolar(Dato);
+            s = s + "|" + Dato + "|\n ";
+            Aux.Encolar(Dato);
         }
-        PasarDatos(aux);
+        PasarDatos(Aux);
         return s;
     }
+    
+
+
 }
