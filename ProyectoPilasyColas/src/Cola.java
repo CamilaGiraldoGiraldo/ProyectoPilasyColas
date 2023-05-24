@@ -71,4 +71,26 @@ public class Cola {
         PasarDatos(Aux);
         return s;
     }
+    void BuscarDatoCola (int d)
+    {
+        int i=0;
+        boolean Verificacion=false;
+        while (i<=Tope)
+        {
+            if (Vector[0] == d)
+            {
+                Verificacion=true;
+                Encolar(d);
+            }
+            i++;
+        }
+        if (Verificacion == true)
+        {
+            JOptionPane.showMessageDialog(null, "Dato encontrado con éxito...");
+        }
+        else{
+            JOptionPane.showMessageDialog(null, " Dato no encontrado...");
+        }
+
+    }
 }

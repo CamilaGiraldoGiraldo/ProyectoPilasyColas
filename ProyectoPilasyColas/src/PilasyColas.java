@@ -46,7 +46,7 @@ public class PilasyColas {
                 case 2:
                     n = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el tamaño de la Cola"));
                     Cola C1 = new Cola(n);
-                    
+
                     do {
                         opc = Menu1();
                         switch (opc) {
@@ -74,10 +74,18 @@ public class PilasyColas {
                                     JOptionPane.showMessageDialog(null, "Cola Vacia...");
                                 }
                                 break;
+                            case 4:
+                                if (C1.ColaVacia() == true) {
+                                    JOptionPane.showMessageDialog(null, "Cola Vacia...");
+                                } else {
+                                    d = Integer.parseInt(JOptionPane.showInputDialog("Ingrese un valor"));
+                                    C1.BuscarDatoCola(d);
+                                }
+                                break;
                         }
-                    } while (opc != 4);
-                    break;
+                    } while (opc != 5);
             }
+            break;
         } while (tipo != 3);
     }
 
@@ -106,7 +114,8 @@ public class PilasyColas {
                 + "1.Encolar\n"
                 + "2.Desacolar \n"
                 + "3.Mostrar Cola\n"
-                + "4. Salir"));
+                + "4.Buscar Dato\n"
+                + "5. Salir"));
         return opc;
     }
 }
