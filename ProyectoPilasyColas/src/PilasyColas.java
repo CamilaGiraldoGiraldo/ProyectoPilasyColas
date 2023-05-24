@@ -1,4 +1,4 @@
-import javax.lang.model.util.ElementScanner14;
+
 import javax.swing.JOptionPane;
 
 public class PilasyColas {
@@ -47,16 +47,34 @@ public class PilasyColas {
                 case 2:
                     n = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el tamaño de la Cola"));
                     Cola C1 = new Cola(n);
+                    Cola C_Aux = new Cola(n);
                     do {
                         opc = Menu1();
                         switch (opc) {
                             case 1:
                                 if (C1.ColaLLena() == false) {
                                     d = Integer.parseInt(JOptionPane.showInputDialog("Ingrese un valor"));
-                                    C1.Acolar(d);
+                                    C1.Encolar(d);
                                 } else {
-                                    JOptionPane.showMessageDialog(null, "Pila Llena...");
+                                    JOptionPane.showMessageDialog(null, "Cola Llena...");
                                 }
+                                break;
+                            case 2:
+                                if (C1.ColaVacia() == true) {
+                                    JOptionPane.showMessageDialog(null, "Cola Llena...");
+                                } else {
+                                    C1.Desacolar();
+                                    JOptionPane.showMessageDialog(null, "Dato desencolado con exito...");
+                                }
+                                break;
+
+                            case 3:
+                                if (C1.ColaVacia() == false) {
+                                    JOptionPane.showMessageDialog(null, C1.MostrarCola(C_Aux));
+                                } else {
+                                    JOptionPane.showMessageDialog(null, "Pila Vacia...");
+                                }
+                                break;
                         }
                     } while (opc != 4);
                     break;
