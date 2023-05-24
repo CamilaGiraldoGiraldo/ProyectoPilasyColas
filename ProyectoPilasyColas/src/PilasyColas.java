@@ -1,4 +1,4 @@
-import javax.lang.model.util.ElementScanner14;
+
 import javax.swing.JOptionPane;
 
 public class PilasyColas {
@@ -41,8 +41,16 @@ public class PilasyColas {
                                     JOptionPane.showMessageDialog(null, "Pila Vacia...");
                                 }
                                 break;
+                            case 4:
+                                if (P1.PilaVacia() == false) {
+                                    d = Integer.parseInt(JOptionPane.showInputDialog("Ingrese un valor que desea reemplazar: "));
+                                    P1.ReemplazarDatoPila(d, Aux);
+                                } else {
+                                    JOptionPane.showMessageDialog(null, "Pila Vacia...");
+                                }
+                                break;
                         }
-                    } while (opc != 4);
+                    } while (opc != 5);
                     break;
                 case 2:
                     n = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el tamaño de la Cola"));
@@ -96,7 +104,8 @@ public class PilasyColas {
                 + "1.Apilar\n"
                 + "2.Desapilar \n"
                 + "3.Mostrar Pila\n"
-                + "4. Salir"));
+                + "4. Reemplazar dato\n"
+                + "5. Salir"));
         return opc;
     }
 
