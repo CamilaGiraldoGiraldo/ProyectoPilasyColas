@@ -52,6 +52,7 @@ public class Pila {
                 s = s + "|" + Dato + "|\n ";
                 aux.Apilar(Dato);
             }
+            
             Pasar_datos(aux);
             return s;
         }

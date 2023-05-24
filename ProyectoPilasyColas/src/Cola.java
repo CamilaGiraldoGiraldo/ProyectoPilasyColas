@@ -29,7 +29,7 @@ public class Cola {
         return B;
     }
 
-    void Acolar(int n)
+    void Encolar(int n)
     {
         Tope++;
         Vector[Tope] = n;
@@ -38,19 +38,37 @@ public class Cola {
     int Desacolar (){
     
         int aux = Vector [0];
-        int i = 1;
-        while (i != Tope)
+        if (Tope != 0)
         {
-            Vector [i-1]=Vector[i];
-            i++;
+            int i = 1;
+            while (i <= Tope) {
+                Vector[i - 1] = Vector[i];
+                i++;
+
+            }
         }
         Tope--;
-        return Vector[0];
+        return aux;
     }
-    void Mostrar_Cola()
+    void PasarDatos (Cola aux)
     {
-        String Cola = " ";
-        
-        desacolar
-    
+        int Auxiliar;
+        while (aux.ColaVacia() == false){
+            Auxiliar = aux.Desacolar();
+            Encolar(Auxiliar);
+        }
     }
+    public String Mostrar_Cola(){
+        Cola Aux = new Cola(Limite + 1);
+        String s = " ";
+        int Dato = 0;
+        while (ColaVacia() != true)
+        {
+            Dato = Desacolar();
+            s = s + "|" + Dato + "|\n ";
+            Aux.Encolar(Dato);
+        }
+        PasarDatos(Aux);
+        return s;
+    }
+}

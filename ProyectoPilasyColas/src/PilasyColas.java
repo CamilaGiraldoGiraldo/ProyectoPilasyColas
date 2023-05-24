@@ -1,4 +1,3 @@
-import javax.lang.model.util.ElementScanner14;
 import javax.swing.JOptionPane;
 
 public class PilasyColas {
@@ -47,34 +46,32 @@ public class PilasyColas {
                 case 2:
                     n = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el tamaño de la Cola"));
                     Cola C1 = new Cola(n);
-                    Cola Auxiliar = new Cola (n);
+                    
                     do {
                         opc = Menu1();
                         switch (opc) {
                             case 1:
                                 if (C1.ColaLLena() == false) {
                                     d = Integer.parseInt(JOptionPane.showInputDialog("Ingrese un valor"));
-                                    C1.Acolar(d);
+                                    C1.Encolar(d);
                                 } else {
                                     JOptionPane.showMessageDialog(null, "Cola  Llena...");
                                 }
                                 break;
-                            case 2:
-                                {
-                                    if (C1.ColaLLena() == false) {
-                                        d = Integer.parseInt(JOptionPane.showInputDialog("Ingrese un valor"));
-                                        C1.Desacolar();
-                                    } else {
-                                        JOptionPane.showMessageDialog(null, "Cola Llena...");
-                                    }
+                            case 2: {
+                                if (C1.ColaVacia() == true) {
+                                    JOptionPane.showMessageDialog(null, "Cola Llena...");
+                                } else {
+                                    C1.Desacolar();
+                                    JOptionPane.showMessageDialog(null, "Dato desencolado con exito...");
                                 }
+                            }
                                 break;
                             case 3:
                                 if (C1.ColaVacia() == false) {
-                                    JOptionPane.showMessageDialog(null, "Cola Vacia...");
-                                }
-                                else{
                                     JOptionPane.showMessageDialog(null, C1.Mostrar_Cola());
+                                } else {
+                                    JOptionPane.showMessageDialog(null, "Cola Vacia...");
                                 }
                                 break;
                         }
@@ -106,7 +103,7 @@ public class PilasyColas {
     public static int Menu1() {
         int opc;
         opc = Integer.parseInt(JOptionPane.showInputDialog("*** Menu para Pilas ***\n\n"
-                + "1.Acolar\n"
+                + "1.Encolar\n"
                 + "2.Desacolar \n"
                 + "3.Mostrar Cola\n"
                 + "4. Salir"));
