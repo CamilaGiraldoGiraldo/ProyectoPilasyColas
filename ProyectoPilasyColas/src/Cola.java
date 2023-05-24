@@ -9,6 +9,17 @@ public class Cola {
         this.Tope = -1;
         this.Vector = new int[n];
     }
+    
+    public boolean ColaVacia()
+    {
+        if (Tope == -1)
+        {
+            return true;
+        }else
+        {
+            return false;
+        }
+    }
 
     public boolean ColaLLena() {
         boolean B = false;
@@ -18,7 +29,7 @@ public class Cola {
         return B;
     }
 
-    void Acolar(int n)
+    void Encolar(int n)
     {
         Tope++;
         Vector[Tope] = n;
