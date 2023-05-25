@@ -10,6 +10,14 @@ public class Pila {
         this.Vector = new int[n];
     }
 
+    
+
+    public int getTope() {
+        return Tope;
+    }
+
+
+
     public boolean PilaVacia() {
         if (Tope == -1) {
             return true;
@@ -83,4 +91,6 @@ public class Pila {
             JOptionPane.showMessageDialog(null, " Dato no encontrado...");
         }
     }
+
+    
 }

@@ -3,20 +3,17 @@ import javax.swing.JOptionPane;
 public class Cola {
     // Atributos
     int Limite, Tope, Vector[];
-    public Cola(int n)
-    {
+
+    public Cola(int n) {
         this.Limite = n - 1;
         this.Tope = -1;
         this.Vector = new int[n];
     }
-    
-    public boolean ColaVacia()
-    {
-        if (Tope == -1)
-        {
+
+    public boolean ColaVacia() {
+        if (Tope == -1) {
             return true;
-        }else
-        {
+        } else {
             return false;
         }
     }
@@ -29,68 +26,119 @@ public class Cola {
         return B;
     }
 
-    void Encolar(int n)
-    {
+    void Encolar(int n) {
         Tope++;
         Vector[Tope] = n;
     }
 
-    int Desacolar ()
-    {
-        int aux = Vector [0];
-        int i = 1;
-        while (i != Tope)
-        {
-            Vector [i-1]=Vector[i];
-            i++;
+    int Desacolar() {
+        int aux = Vector[0];
+        if (Tope != 0) {
+            int i = 1;
+            while (i <= Tope) {
+                Vector[i - 1] = Vector[i];
+                i++;
+            }
         }
         Tope--;
         return aux;
     }
-    void PasarDatos (Cola aux)
-    {
-        int Auxiliar;
-        while (aux.ColaVacia() == false){
+
+    void PasarDatos(Cola aux) {
+        int Auxiliar = 0;
+        while (aux.ColaVacia() == false) {
             Auxiliar = aux.Desacolar();
             Encolar(Auxiliar);
         }
     }
-    public String Mostrar_Cola(){
-        Cola Aux = new Cola(Limite + 1);
+
+    public String Mostrar(Cola aux) {
         String s = " ";
         int Dato = 0;
-        while (ColaVacia() != true)
-        {
+        while (ColaVacia() != true) {
             Dato = Desacolar();
             s = s + "|" + Dato + "|\n ";
-            Aux.Encolar(Dato);
+            aux.Encolar(Dato);
         }
-        PasarDatos(Aux);
+
+        PasarDatos(aux);
         return s;
     }
-    void BuscarDatoCola (int d)
-    {
-        int i=0;
-        boolean Verificacion=false;
-        while (i<=Tope)
-        {
-            if (Vector[0] == d)
-            {
-                Verificacion=true;
-                Encolar(d);
+
+    void BuscarDatoCola (int d, Cola Aux) {
+        int dato = 0;
+        boolean Encontrado = false;
+        while (ColaVacia() != true && Encontrado != true) {
+            dato = Desacolar();
+            if (dato == d) {
+                Encontrado = true;
+                Aux.Encolar(dato);
             }
-            i++;
+            else
+            {
+                Aux.Encolar(dato);
+            }
         }
-        if (Verificacion == true)
+        PasarDatos(Aux);
+        if (Encontrado == true)
         {
             JOptionPane.showMessageDialog(null, "Dato encontrado con éxito...");
         }
         else{
             JOptionPane.showMessageDialog(null, " Dato no encontrado...");
         }
-
     }
-    
 
+    void EliminarDatoCola(int d, Cola Aux) {
+        int dato = 0;
+        boolean Encontrado = false;
+        while (ColaVacia() != true && Encontrado != true) {
+            dato = Desacolar();
+            if (dato == d) {
+                Encontrado = true;
+            } else {
+                Aux.Encolar(dato);
+            }
+        }
+        PasarDatos(Aux);
+        if (Encontrado == true) {
+            JOptionPane.showMessageDialog(null, "Dato eliminado con éxito...");
+        } else {
+            JOptionPane.showMessageDialog(null, " Dato no encontrado...");
+        }
+    }
 
+    void OrdenarColaAscendente()
+    {
+        int menor =0, dato=0;
+        Cola Aux1 = new Cola(Limite);
+        Cola Aux2 = new Cola(Limite);
+        PasarDatos(Aux1);
+        while (Aux1.ColaVacia()!= false || Aux2.ColaVacia() != false)
+        {
+            if (Aux2.ColaVacia()== true)
+            {
+                dato = Aux1.Desacolar();
+                if(dato < menor)
+                {
+                    menor=dato;
+                }
+                else
+                {
+                    Aux2.Encolar(dato);
+                }
+            }
+            else{
+                dato = Aux2.Desacolar();
+                if(dato < menor)
+                {
+                    menor=dato;
+                }
+                else
+                {
+                    Aux1.Encolar(dato);
+                }
+            }
+        }
+    }
 }
