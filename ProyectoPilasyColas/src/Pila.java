@@ -83,4 +83,35 @@ public class Pila {
             JOptionPane.showMessageDialog(null, " Dato no encontrado...");
         }
     }
+
+    public void EliminarDatoPila(int d, Pila Aux){
+        while (!PilaVacia() && !(Vector[Tope] == d)){
+            Aux.Apilar(Desapilar());
+        }
+        if (Vector[Tope] == d && Tope != -1){
+            Desapilar();
+            JOptionPane.showMessageDialog(null, "Dato eliminado con exito...");
+        }else{
+            JOptionPane.showMessageDialog(null, "El dato que desea eliminar no exite...");
+        }
+        Pasar_datos(Aux);
+    }
+
+    public void BuscarDatoPila(int d, Pila Aux){
+        Boolean aprobacion = true;
+        while(!PilaVacia() && aprobacion){
+            if(d == Vector[Tope]){
+                aprobacion= false;
+            }else{
+                Aux.Apilar(Desapilar());
+            } 
+        }
+        if (!aprobacion){
+            JOptionPane.showMessageDialog(null, "Dato encontrado con exito...");
+        } else {
+            JOptionPane.showMessageDialog(null, "Dato no encontrado...");
+        }
+        Pasar_datos(Aux);
+    }
 }
+ 

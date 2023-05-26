@@ -91,11 +91,12 @@ public class Cola {
 
     void EliminarDatoCola(int d, Cola Aux) {
         int dato = 0;
-        boolean Encontrado = false;
-        while (ColaVacia() != true && Encontrado != true) {
+        boolean Encontrado = false, aprobacion = true;
+        while (ColaVacia() != true ) {
             dato = Desacolar();
-            if (dato == d) {
+            if (dato == d && aprobacion) {
                 Encontrado = true;
+                aprobacion = false;
             } else {
                 Aux.Encolar(dato);
             }
@@ -105,6 +106,29 @@ public class Cola {
             JOptionPane.showMessageDialog(null, "Dato eliminado con éxito...");
         } else {
             JOptionPane.showMessageDialog(null, " Dato no encontrado...");
+        }
+    }
+
+    void ReemplazarDatoCola(int dato, Cola Aux){
+        int d, reemplazo;
+        boolean aprobacion = false, aprobacion2 = true;
+        while(!ColaVacia()){
+            d = Desacolar();
+            if (d == dato && aprobacion2 == true){
+                reemplazo = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el nuevo Valor"));
+                Aux.Encolar(reemplazo);
+                aprobacion = true;
+                aprobacion2 = false;
+            } else{
+                Aux.Encolar(d);
+            }
+        }
+        PasarDatos(Aux);
+
+        if (aprobacion){
+            JOptionPane.showMessageDialog(null, "Elemento reemplazado con exito...");
+        }else{
+            JOptionPane.showMessageDialog(null, "Dato a reemplazar no encontrado...");
         }
     }
 }
