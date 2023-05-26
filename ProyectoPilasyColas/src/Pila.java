@@ -91,6 +91,5 @@ public class Pila {
             JOptionPane.showMessageDialog(null, " Dato no encontrado...");
         }
     }
-
-    
 }
+ 
