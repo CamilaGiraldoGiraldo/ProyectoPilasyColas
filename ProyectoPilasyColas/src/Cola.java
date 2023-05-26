@@ -5,6 +5,8 @@ public class Cola {
     int Limite, Tope, Vector[];
 
     public Cola(int n) {
+
+    public Cola(int n) {
         this.Limite = n - 1;
         this.Tope = -1;
         this.Vector = new int[n];
@@ -89,25 +91,8 @@ public class Cola {
         }
     }
 
-    void EliminarDatoCola(int d, Cola Aux) {
-        int dato = 0;
-        boolean Encontrado = false;
-        while (ColaVacia() != true && Encontrado != true) {
-            dato = Desacolar();
-            if (dato == d) {
-                Encontrado = true;
-            } else {
-                Aux.Encolar(dato);
-            }
-        }
-        PasarDatos(Aux);
-        if (Encontrado == true) {
-            JOptionPane.showMessageDialog(null, "Dato eliminado con éxito...");
-        } else {
-            JOptionPane.showMessageDialog(null, " Dato no encontrado...");
-        }
     }
-
+    
     void OrdenarColaAscendente()
     {
         int menor =0, dato=0;
