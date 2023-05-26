@@ -113,5 +113,15 @@ public class Pila {
         }
         Pasar_datos(Aux);
     }
+/*
+ * public void OrdenarAscendente(Pila Aux){
+ * Pila Aux2 = new Pila(Limite+1);
+ * int mayor;
+ * while(!PilaVacia()){
+ * if (Vector[Tope] > mayor)
+ * }
+ * }
+ */
 }
+        
  
