@@ -118,14 +118,56 @@ public class Pila {
         }
         Pasar_datos(Aux);
     }
-/* 
     public void OrdenarAscendente(Pila Aux){
         Pila Aux2 = new Pila(Limite+1);
-        int mayor;
+        int mayor = Desapilar();
         while(!PilaVacia()){
-            if (Vector[Tope] > mayor)
+            if (Vector[Tope] > mayor){
+                Aux.Apilar(mayor);
+                mayor = Desapilar();
+            }else if(Vector[Tope]== mayor){
+                Aux.Apilar(Desapilar());
+            }else{
+                Aux.Apilar(Desapilar());
+            } 
         }
-    }*/
+        Apilar(mayor);
+        while(!Aux.PilaVacia() || !Aux2.PilaVacia()){
+            Ascendente(Aux, Aux2);
+        }
+        JOptionPane.showMessageDialog(null, "Pila Ordenada con exito...");
+    }
+
+    public void Ascendente(Pila Aux, Pila Aux2){
+        int mayor;
+         if(Aux.PilaVacia()){
+            mayor = Aux2.Desapilar();
+            while(!Aux2.PilaVacia()){
+                if(Aux2.Vector[Tope] > mayor){
+                    Aux.Apilar(mayor);
+                    mayor= Aux2.Desapilar();
+                }else if (Aux2.Vector[Tope] == mayor){
+                    Aux.Apilar(Aux2.Desapilar());
+                }else{
+                    Aux.Apilar(Aux2.Desapilar());
+                }
+            }
+            Apilar(mayor);
+        }else{
+            mayor = Aux.Desapilar();
+            while (!Aux.PilaVacia()) {
+                if (Aux.Vector[Tope] > mayor) {
+                    Aux2.Apilar(mayor);
+                    mayor = Aux.Desapilar();
+                } else if (Aux.Vector[Tope] == mayor) {
+                    Aux2.Apilar(Aux.Desapilar());
+                } else {
+                    Aux2.Apilar(Aux.Desapilar());
+                }
+            }
+            Apilar(mayor);
+        }
+    }
 }
         
  

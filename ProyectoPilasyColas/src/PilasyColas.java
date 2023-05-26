@@ -67,6 +67,13 @@ public class PilasyColas {
                                 }
                                 break;
                             case 7:
+                                if(P1.PilaVacia() == false){
+                                    P1.OrdenarAscendente(Aux);
+                                }else{
+                                    JOptionPane.showMessageDialog(null, "Pila Vacia...");
+                                }
+                            break;
+                            case 8:
                                 salir1 = true;
                                 break;
                             default:
@@ -164,7 +171,8 @@ public class PilasyColas {
                 + "4.Reemplazar dato\n"
                 + "5.Eliminar Dato\n"
                 + "6.Buscar Dato\n"
-                + "7. Salir"));
+                + "7.Ordenar Ascendente\n"
+                + "8.Salir"));
         return opc;
     }
 
@@ -179,7 +187,7 @@ public class PilasyColas {
 
     public static int Menu1() {
         int opc;
-        opc = Integer.parseInt(JOptionPane.showInputDialog("*** Menu para Pilas ***\n\n"
+        opc = Integer.parseInt(JOptionPane.showInputDialog("*** Menu para Colas ***\n\n"
                 + "1.Encolar\n"
                 + "2.Desencolar \n"
                 + "3.Mostrar Cola\n"
