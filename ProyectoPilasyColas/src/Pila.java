@@ -122,11 +122,9 @@ public class Pila {
         Pila Aux2 = new Pila(Limite+1);
         int mayor = Desapilar();
         while(!PilaVacia()){
-            if (Vector[Tope] > mayor){
+            if (Vector[Tope] >= mayor){
                 Aux.Apilar(mayor);
                 mayor = Desapilar();
-            }else if(Vector[Tope]== mayor){
-                Aux.Apilar(Desapilar());
             }else{
                 Aux.Apilar(Desapilar());
             } 
@@ -143,30 +141,25 @@ public class Pila {
          if(Aux.PilaVacia()){
             mayor = Aux2.Desapilar();
             while(!Aux2.PilaVacia()){
-                if(Aux2.Vector[Tope] > mayor){
+                if(Aux2.Vector[Aux2.Tope] >= mayor){
                     Aux.Apilar(mayor);
                     mayor= Aux2.Desapilar();
-                }else if (Aux2.Vector[Tope] == mayor){
-                    Aux.Apilar(Aux2.Desapilar());
                 }else{
                     Aux.Apilar(Aux2.Desapilar());
                 }
             }
-            Apilar(mayor);
         }else{
             mayor = Aux.Desapilar();
             while (!Aux.PilaVacia()) {
-                if (Aux.Vector[Tope] > mayor) {
+                if (Aux.Vector[Aux.Tope] >= mayor) {
                     Aux2.Apilar(mayor);
                     mayor = Aux.Desapilar();
-                } else if (Aux.Vector[Tope] == mayor) {
-                    Aux2.Apilar(Aux.Desapilar());
                 } else {
                     Aux2.Apilar(Aux.Desapilar());
                 }
             }
-            Apilar(mayor);
         }
+        Apilar(mayor);
     }
 }
         
