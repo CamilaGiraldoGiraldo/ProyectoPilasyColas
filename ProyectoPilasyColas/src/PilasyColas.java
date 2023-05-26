@@ -179,7 +179,7 @@ public class PilasyColas {
 
     public static int Menu1() {
         int opc;
-        opc = Integer.parseInt(JOptionPane.showInputDialog("*** Menu para Colas ***\n\n"
+        opc = Integer.parseInt(JOptionPane.showInputDialog("*** Menu para Pilas ***\n\n"
                 + "1.Encolar\n"
                 + "2.Desencolar \n"
                 + "3.Mostrar Cola\n"

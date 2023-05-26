@@ -5,8 +5,6 @@ public class Cola {
     int Limite, Tope, Vector[];
 
     public Cola(int n) {
-
-    public Cola(int n) {
         this.Limite = n - 1;
         this.Tope = -1;
         this.Vector = new int[n];
@@ -91,8 +89,50 @@ public class Cola {
         }
     }
 
+    void EliminarDatoCola(int d, Cola Aux) {
+        int dato = 0;
+        boolean Encontrado = false, aprobacion = true;
+        while (ColaVacia() != true ) {
+            dato = Desacolar();
+            if (dato == d && aprobacion) {
+                Encontrado = true;
+                aprobacion = false;
+            } else {
+                Aux.Encolar(dato);
+            }
+        }
+        PasarDatos(Aux);
+        if (Encontrado == true) {
+            JOptionPane.showMessageDialog(null, "Dato eliminado con éxito...");
+        } else {
+            JOptionPane.showMessageDialog(null, " Dato no encontrado...");
+        }
     }
-    
+
+    void ReemplazarDatoCola(int dato, Cola Aux){
+        int d, reemplazo;
+        boolean aprobacion = false, aprobacion2 = true;
+        while(!ColaVacia()){
+            d = Desacolar();
+            if (d == dato && aprobacion2 == true){
+                reemplazo = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el nuevo Valor"));
+                Aux.Encolar(reemplazo);
+                aprobacion = true;
+                aprobacion2 = false;
+            } else{
+                Aux.Encolar(d);
+            }
+        }
+        PasarDatos(Aux);
+
+        if (aprobacion){
+            JOptionPane.showMessageDialog(null, "Elemento reemplazado con exito...");
+        }else{
+            JOptionPane.showMessageDialog(null, "Dato a reemplazar no encontrado...");
+        }
+    }
+
+    /*
     void OrdenarColaAscendente()
     {
         int menor =0, dato=0;
@@ -126,4 +166,5 @@ public class Cola {
             }
         }
     }
+     */
 }
