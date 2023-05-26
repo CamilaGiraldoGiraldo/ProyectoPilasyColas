@@ -85,11 +85,16 @@ public class Pila {
     }
 
     public void EliminarDatoPila(int d, Pila Aux){
-        while (!PilaVacia() && !(Vector[Tope] == d)){
-            Aux.Apilar(Desapilar());
+        boolean aprobacion = true;
+        while (!PilaVacia() && aprobacion){
+            if (d == Vector[Tope]) {
+                Desapilar();
+                aprobacion = false;
+            } else {
+                Aux.Apilar(Desapilar());
+            }
         }
-        if (Vector[Tope] == d && Tope != -1){
-            Desapilar();
+        if (!aprobacion){
             JOptionPane.showMessageDialog(null, "Dato eliminado con exito...");
         }else{
             JOptionPane.showMessageDialog(null, "El dato que desea eliminar no exite...");
@@ -113,15 +118,14 @@ public class Pila {
         }
         Pasar_datos(Aux);
     }
-/*
- * public void OrdenarAscendente(Pila Aux){
- * Pila Aux2 = new Pila(Limite+1);
- * int mayor;
- * while(!PilaVacia()){
- * if (Vector[Tope] > mayor)
- * }
- * }
- */
+/* 
+    public void OrdenarAscendente(Pila Aux){
+        Pila Aux2 = new Pila(Limite+1);
+        int mayor;
+        while(!PilaVacia()){
+            if (Vector[Tope] > mayor)
+        }
+    }*/
 }
         
  
