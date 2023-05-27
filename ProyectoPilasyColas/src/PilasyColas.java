@@ -68,6 +68,20 @@ public class PilasyColas {
                                 }
                                 break;
                             case 7:
+                                if(P1.PilaVacia() == false){
+                                    P1.OrdenarAscendente(Aux);
+                                }else{
+                                    JOptionPane.showMessageDialog(null, "Pila Vacia...");
+                                }
+                            break;
+                            case 8:
+                            if (P1.PilaVacia() == false){
+                                P1.OrdenarDescendente(Aux);
+                            }else{
+                                JOptionPane.showMessageDialog(null, "Pila Vacia...");
+                            }
+                            break;
+                            case 9:
                                 salir1 = true;
                                 break;
                             default:
@@ -181,7 +195,9 @@ public class PilasyColas {
                 + "4.Reemplazar dato\n"
                 + "5.Eliminar Dato\n"
                 + "6.Buscar Dato\n"
-                + "7. Salir"));
+                + "7.Ordenar Ascendente\n"
+                + "8.Ordenar Descendente\n"
+                + "9.Salir"));
         return opc;
     }
 
