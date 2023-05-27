@@ -6,7 +6,7 @@ public class PilasyColas {
         int n = 0, d, opc, tipo;
         Boolean salirp = false;
         do {
-           
+
             tipo = MenuPrincipal();
             switch (tipo) {
                 case 1:
@@ -59,10 +59,11 @@ public class PilasyColas {
                                 }
                                 break;
                             case 6:
-                                if(P1.PilaVacia() == false){
-                                    d = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el dato que desea buscar..."));
+                                if (P1.PilaVacia() == false) {
+                                    d = Integer.parseInt(
+                                            JOptionPane.showInputDialog("Ingrese el dato que desea buscar..."));
                                     P1.BuscarDatoPila(d, Aux);
-                                }else{
+                                } else {
                                     JOptionPane.showMessageDialog(null, "Pila Vacia...");
                                 }
                                 break;
@@ -80,6 +81,7 @@ public class PilasyColas {
                     n = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el tamaño de la Cola"));
                     Cola C1 = new Cola(n);
                     Cola C_Aux = new Cola(n);
+                    Cola c_Aux2 = new Cola(n);
                     do {
                         opc = Menu1();
                         switch (opc) {
@@ -133,6 +135,21 @@ public class PilasyColas {
                                 }
                                 break;
                             case 7:
+                                if (C1.ColaVacia() == false) {
+                                    C1.OrdenarColaAscendente(C_Aux, c_Aux2);
+                                   
+                                } else {
+                                    JOptionPane.showMessageDialog(null, "Cola vacia...");
+                                }
+                                break;
+                            case 8:
+                                if (C1.ColaVacia() == false) {
+                                    C1.OrdenarColaDescendente(C_Aux, c_Aux2);
+                                } else {
+                                    JOptionPane.showMessageDialog(null, "Cola vacia...");
+                                }
+                                break;
+                            case 9:
                                 salir = true;
                                 break;
                             default:
@@ -142,7 +159,7 @@ public class PilasyColas {
                     } while (!salir);
                     break;
                 case 3:
-                    
+
                     salirp = true;
                     JOptionPane.showMessageDialog(null, "Gracias por utilizar nuestro sistema...");
                     break;
@@ -179,14 +196,16 @@ public class PilasyColas {
 
     public static int Menu1() {
         int opc;
-        opc = Integer.parseInt(JOptionPane.showInputDialog("*** Menu para Pilas ***\n\n"
+        opc = Integer.parseInt(JOptionPane.showInputDialog("*** Menu para Colas ***\n\n"
                 + "1.Encolar\n"
                 + "2.Desencolar \n"
                 + "3.Mostrar Cola\n"
                 + "4.Buscar Dato\n"
                 + "5.Eliminar Dato\n"
                 + "6.Reemplazar Dato\n"
-                + "7.Salir"));
+                + "7.Ordenar ascendente\n"
+                + "8.Ordenar descendente\n"
+                + "9.Salir"));
         return opc;
     }
 }

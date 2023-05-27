@@ -65,7 +65,7 @@ public class Cola {
         return s;
     }
 
-    void BuscarDatoCola (int d, Cola Aux) {
+    void BuscarDatoCola(int d, Cola Aux) {
         int dato = 0;
         boolean Encontrado = false;
         while (ColaVacia() != true && Encontrado != true) {
@@ -73,18 +73,14 @@ public class Cola {
             if (dato == d) {
                 Encontrado = true;
                 Aux.Encolar(dato);
-            }
-            else
-            {
+            } else {
                 Aux.Encolar(dato);
             }
         }
         PasarDatos(Aux);
-        if (Encontrado == true)
-        {
+        if (Encontrado == true) {
             JOptionPane.showMessageDialog(null, "Dato encontrado con éxito...");
-        }
-        else{
+        } else {
             JOptionPane.showMessageDialog(null, " Dato no encontrado...");
         }
     }
@@ -92,7 +88,7 @@ public class Cola {
     void EliminarDatoCola(int d, Cola Aux) {
         int dato = 0;
         boolean Encontrado = false, aprobacion = true;
-        while (ColaVacia() != true ) {
+        while (ColaVacia() != true) {
             dato = Desacolar();
             if (dato == d && aprobacion) {
                 Encontrado = true;
@@ -109,62 +105,106 @@ public class Cola {
         }
     }
 
-    void ReemplazarDatoCola(int dato, Cola Aux){
+    void ReemplazarDatoCola(int dato, Cola Aux) {
         int d, reemplazo;
         boolean aprobacion = false, aprobacion2 = true;
-        while(!ColaVacia()){
+        while (!ColaVacia()) {
             d = Desacolar();
-            if (d == dato && aprobacion2 == true){
+            if (d == dato && aprobacion2 == true) {
                 reemplazo = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el nuevo Valor"));
                 Aux.Encolar(reemplazo);
                 aprobacion = true;
                 aprobacion2 = false;
-            } else{
+            } else {
                 Aux.Encolar(d);
             }
         }
         PasarDatos(Aux);
 
-        if (aprobacion){
+        if (aprobacion) {
             JOptionPane.showMessageDialog(null, "Elemento reemplazado con exito...");
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "Dato a reemplazar no encontrado...");
         }
     }
 
-    /*
-    void OrdenarColaAscendente()
-    {
-        int menor =0, dato=0;
-        Cola Aux1 = new Cola(Limite);
-        Cola Aux2 = new Cola(Limite);
-        PasarDatos(Aux1);
-        while (Aux1.ColaVacia()!= false || Aux2.ColaVacia() != false)
-        {
-            if (Aux2.ColaVacia()== true)
-            {
-                dato = Aux1.Desacolar();
-                if(dato < menor)
-                {
-                    menor=dato;
-                }
-                else
-                {
-                    Aux2.Encolar(dato);
-                }
-            }
-            else{
-                dato = Aux2.Desacolar();
-                if(dato < menor)
-                {
-                    menor=dato;
-                }
-                else
-                {
-                    Aux1.Encolar(dato);
-                }
+    void OrdenarColaAscendente(Cola Aux1, Cola Aux2) {
+        int menor= Desacolar();
+       
+        while (!ColaVacia() ) {
+            if(Vector[0]<= menor){
+                Aux1.Encolar(menor);
+                menor = Desacolar();
+            }else{
+                Aux1.Encolar(Desacolar());
             }
         }
+        Encolar(menor);
+        while(!Aux1.ColaVacia() || !Aux2.ColaVacia()){
+            if(Aux1.ColaVacia()){
+                menor = Aux2.Desacolar();
+                while(!Aux2.ColaVacia()){
+                    if(Aux2.Vector[0]<=menor){
+                        Aux1.Encolar(menor);
+                        menor = Aux2.Desacolar();
+                    }else{
+                        Aux1.Encolar(Aux2.Desacolar());
+                    }
+                }
+            }else{
+                menor = Aux1.Desacolar();
+                while(!Aux1.ColaVacia()){
+                    if(Aux1.Vector[0]<=menor){
+                        Aux2.Encolar(menor);
+                        menor = Aux1.Desacolar();
+                    }else{
+                        Aux2.Encolar(Aux1.Desacolar());
+                    }
+                }
+            }
+            Encolar(menor);
+        }
+        
+        JOptionPane.showMessageDialog(null, "Cola ordenada con exito...");
     }
-     */
+
+    void OrdenarColaDescendente(Cola Aux1, Cola Aux2) {
+        int mayor= Desacolar();
+       
+        while (!ColaVacia() ) {
+            if(Vector[0]>= mayor){
+                Aux1.Encolar(mayor);
+                mayor = Desacolar();
+            }else{
+                Aux1.Encolar(Desacolar());
+            }
+        }
+        Encolar(mayor);
+        while(!Aux1.ColaVacia() || !Aux2.ColaVacia()){
+            if(Aux1.ColaVacia()){
+                mayor = Aux2.Desacolar();
+                while(!Aux2.ColaVacia()){
+                    if(Aux2.Vector[0]>=mayor){
+                        Aux1.Encolar(mayor);
+                        mayor = Aux2.Desacolar();
+                    }else{
+                        Aux1.Encolar(Aux2.Desacolar());
+                    }
+                }
+            }else{
+                mayor = Aux1.Desacolar();
+                while(!Aux1.ColaVacia()){
+                    if(Aux1.Vector[0]>=mayor){
+                        Aux2.Encolar(mayor);
+                        mayor = Aux1.Desacolar();
+                    }else{
+                        Aux2.Encolar(Aux1.Desacolar());
+                    }
+                }
+            }
+            Encolar(mayor);
+        }
+        
+        JOptionPane.showMessageDialog(null, "Cola ordenada con exito...");
+    }
 }
