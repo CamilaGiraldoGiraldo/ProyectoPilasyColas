@@ -41,77 +41,63 @@ public class PilasyColas {
                                 }
                                 break;
                             case 4:
-                                if (P1.PilaVacia() == false) {
-                                    d = Integer.parseInt(
-                                            JOptionPane.showInputDialog("Ingrese un valor que desea reemplazar: "));
-                                    P1.ReemplazarDatoPila(d, Aux);
-                                } else {
-                                    JOptionPane.showMessageDialog(null, "Pila Vacia...");
-                                }
-                                break;
+                                boolean salirb = false;
+                                do {
+                                    opc = TipoBuscar();
+                                    switch (opc) {
+                                        case 1:
+                                            if (P1.PilaVacia() == false) {
+                                                d = Integer.parseInt(
+                                                        JOptionPane.showInputDialog(
+                                                                "Ingrese un valor que desea reemplazar: "));
+                                                P1.ReemplazarDatoPila(d, Aux);
+                                            } else {
+                                                JOptionPane.showMessageDialog(null, "Pila Vacia...");
+                                            }
+                                            break;
+                                        case 2:
+                                            if (P1.PilaVacia() == false) {
+                                                d = Integer.parseInt(
+                                                        JOptionPane.showInputDialog(
+                                                                "Ingrese el dato que desea eliminar..."));
+                                                P1.EliminarDatoPila(d, Aux);
+                                            } else {
+                                                JOptionPane.showMessageDialog(null, "Pila Vacia...");
+                                            }
+                                            break;
+                                        case 3:
+                                            if (P1.PilaVacia() == false) {
+                                                d = Integer.parseInt(
+                                                        JOptionPane.showInputDialog(
+                                                                "Ingrese el dato que desea buscar..."));
+                                                P1.BuscarDatoPila(d, Aux);
+                                            } else {
+                                                JOptionPane.showMessageDialog(null, "Pila Vacia...");
+                                            }
+                                            break;
+                                        case 4:
+                                            salirb = true;
+                                            break;
+                                        default:
+                                            JOptionPane.showMessageDialog(null, "Ingrese una opcion valida...");
+                                            break;
+                                    }
+                                } while (!salirb);
                             case 5:
                                 if (P1.PilaVacia() == false) {
-                                    d = Integer.parseInt(
-                                            JOptionPane.showInputDialog("Ingrese el dato que desea eliminar..."));
-                                    P1.EliminarDatoPila(d, Aux);
+                                    P1.OrdenarAscendente(Aux);
                                 } else {
                                     JOptionPane.showMessageDialog(null, "Pila Vacia...");
                                 }
                                 break;
                             case 6:
                                 if (P1.PilaVacia() == false) {
-                                    d = Integer.parseInt(
-                                            JOptionPane.showInputDialog("Ingrese el dato que desea buscar..."));
-                                    P1.BuscarDatoPila(d, Aux);
+                                    P1.OrdenarDescendente(Aux);
                                 } else {
                                     JOptionPane.showMessageDialog(null, "Pila Vacia...");
                                 }
                                 break;
                             case 7:
-                                if (P1.PilaVacia() == false) {
-                                    P1.OrdenarAscendente(Aux);
-                                    JOptionPane.showMessageDialog(null, "Pila Ordenada con exito...");
-                                } else {
-                                    JOptionPane.showMessageDialog(null, "Pila Vacia...");
-                                }
-                                break;
-                            case 8:
-                                if (P1.PilaVacia() == false) {
-                                    P1.OrdenarDescendente(Aux);
-                                    JOptionPane.showMessageDialog(null, "Pila Ordenada con exito...");
-                                } else {
-                                    JOptionPane.showMessageDialog(null, "Pila Vacia...");
-                                }
-                                break;
-                                case 9:
-                                    if (P1.PilaLLena() == false && !P1.PilaVacia()) {
-                                        P1.OrdenarAscendente(Aux);
-                                        d = Integer.parseInt(JOptionPane.showInputDialog(null,
-                                                "Ingrese el nuevo dato que desea guardar..."));
-                                        P1.InsertarOrdenadoAscendente(d, Aux);
-                                    } else if (P1.PilaVacia()) {
-                                        d = Integer.parseInt(JOptionPane.showInputDialog(null,
-                                                "Ingrese el nuevo dato que desea guardar..."));
-                                        P1.InsertarOrdenadoAscendente(d, Aux);
-                                    } else {
-                                        JOptionPane.showMessageDialog(null, "Pila Llena...");
-                                    }
-                                break;
-                                case 10:
-                                if (P1.PilaLLena() == false && !P1.PilaVacia()) {
-                                    P1.OrdenarDescendente(Aux);
-                                    d = Integer.parseInt(JOptionPane.showInputDialog(null,
-                                            "Ingrese el nuevo dato que desea guardar..."));
-                                    P1.InsertarOrdenadoDescendente(d, Aux);
-                                } else if (P1.PilaVacia()) {
-                                    d = Integer.parseInt(JOptionPane.showInputDialog(null,
-                                            "Ingrese el nuevo dato que desea guardar..."));
-                                    P1.InsertarOrdenadoDescendente(d, Aux);
-                                } else {
-                                    JOptionPane.showMessageDialog(null, "Pila Llena...");
-                                }
-                                break;
-                            case 11:
                                 salir1 = true;
                                 break;
                             default:
@@ -154,76 +140,64 @@ public class PilasyColas {
                                 }
                                 break;
                             case 4:
-                                if (C1.ColaVacia() == true) {
-                                    JOptionPane.showMessageDialog(null, "Cola Vacia...");
-                                } else {
-                                    d = Integer.parseInt(JOptionPane.showInputDialog("Ingrese un valor"));
-                                    C1.BuscarDatoCola(d, C_Aux);
-                                }
-                                break;
+                                boolean salirbc = false;
+                                do {
+                                    opc = TipoBuscar();
+                                    switch (opc) {
+                                        case 1:
+                                            if (C1.ColaVacia() == false) {
+                                                d = Integer.parseInt(
+                                                        JOptionPane.showInputDialog(
+                                                                "Ingrese un valor que desea reemplazar: "));
+                                                C1.ReemplazarDatoCola(d, c_Aux2);
+                                            } else {
+                                                JOptionPane.showMessageDialog(null, "Cola Vacia...");
+                                            }
+                                            break;
+                                        case 2:
+                                            if (C1.ColaVacia() == false) {
+                                                d = Integer.parseInt(
+                                                        JOptionPane.showInputDialog(
+                                                                "Ingrese el dato que desea eliminar..."));
+                                                C1.EliminarDatoCola(d, c_Aux2);
+                                            } else {
+                                                JOptionPane.showMessageDialog(null, "Cola Vacia...");
+                                            }
+                                            break;
+                                        case 3:
+                                            if (C1.ColaVacia() == false) {
+                                                d = Integer.parseInt(
+                                                        JOptionPane.showInputDialog(
+                                                                "Ingrese el dato que desea buscar..."));
+                                                C1.BuscarDatoCola(d, c_Aux2);
+                                            } else {
+                                                JOptionPane.showMessageDialog(null, "Cola Vacia...");
+                                            }
+                                            break;
+                                        case 4:
+                                            salirbc = true;
+                                            break;
+                                        default:
+                                            JOptionPane.showMessageDialog(null, "Ingrese una opcion valida...");
+                                            break;
+                                    }
+                                } while (!salirbc);
                             case 5:
-                                if (C1.ColaVacia() == true) {
-                                    JOptionPane.showMessageDialog(null, "Cola Vacia...");
-                                } else {
-                                    d = Integer.parseInt(JOptionPane.showInputDialog("Ingrese un valor a eliminar"));
-                                    C1.EliminarDatoCola(d, C_Aux);
-                                }
-                                break;
-                            case 6:
-                                if (C1.ColaVacia() == false) {
-                                    d = Integer.parseInt(
-                                            JOptionPane.showInputDialog("Ingrese el dato que desea reemplazar..."));
-                                    C1.ReemplazarDatoCola(d, C_Aux);
-                                } else {
-                                    JOptionPane.showMessageDialog(null, "Cola vacia...");
-                                }
-                                break;
-                            case 7:
                                 if (C1.ColaVacia() == false) {
                                     C1.OrdenarColaAscendente(C_Aux, c_Aux2);
-                                    JOptionPane.showMessageDialog(null, "Cola Ordenada con exito...");
 
                                 } else {
                                     JOptionPane.showMessageDialog(null, "Cola vacia...");
                                 }
                                 break;
-                            case 8:
+                            case 6:
                                 if (C1.ColaVacia() == false) {
                                     C1.OrdenarColaDescendente(C_Aux, c_Aux2);
-                                    JOptionPane.showMessageDialog(null, "Cola Ordenada con exito...");
                                 } else {
                                     JOptionPane.showMessageDialog(null, "Cola vacia...");
                                 }
                                 break;
-                            case 9:
-                                if (C1.ColaLLena() == false && !C1.ColaVacia()) {
-                                    C1.OrdenarColaAscendente(C_Aux, c_Aux2);
-                                    d = Integer.parseInt(JOptionPane.showInputDialog(null,
-                                            "Ingrese el nuevo dato que desea guardar..."));
-                                    C1.InsertarOrdenadoAscendente(d);
-                                } else if (C1.ColaVacia()) {
-                                    d = Integer.parseInt(JOptionPane.showInputDialog(null,
-                                            "Ingrese el nuevo dato que desea guardar..."));
-                                    C1.InsertarOrdenadoAscendente(d);
-                                } else {
-                                    JOptionPane.showMessageDialog(null, "Cola Llena...");
-                                }
-                                break;
-                                case 10:
-                                    if (C1.ColaLLena() == false && !C1.ColaVacia()) {
-                                        C1.OrdenarColaDescendente(C_Aux, c_Aux2);
-                                        d = Integer.parseInt(JOptionPane.showInputDialog(null,
-                                                "Ingrese el nuevo dato que desea guardar..."));
-                                        C1.InsertarOrdenadoDescendente(d);
-                                    } else if (C1.ColaVacia()) {
-                                        d = Integer.parseInt(JOptionPane.showInputDialog(null,
-                                                "Ingrese el nuevo dato que desea guardar..."));
-                                        C1.InsertarOrdenadoDescendente(d);
-                                    } else {
-                                        JOptionPane.showMessageDialog(null, "Cola Llena...");
-                                    }
-                                break;
-                            case 11:
+                            case 7:
                                 salir = true;
                                 break;
                             default:
@@ -252,14 +226,10 @@ public class PilasyColas {
                 + "1.Apilar\n"
                 + "2.Desapilar \n"
                 + "3.Mostrar Pila\n"
-                + "4.Reemplazar dato\n"
-                + "5.Eliminar Dato\n"
-                + "6.Buscar Dato\n"
+                + "4.Buscar dato\n"
                 + "7.Ordenar Ascendente\n"
                 + "8.Ordenar Descendente\n"
-                + "9.Apilar Ordenado Ascendente\n"
-                + "10.Apilar Ordenado Descendente\n"
-                + "11.Salir"));
+                + "9.Salir"));
         return opc;
     }
 
@@ -279,13 +249,19 @@ public class PilasyColas {
                 + "2.Desencolar \n"
                 + "3.Mostrar Cola\n"
                 + "4.Buscar Dato\n"
-                + "5.Eliminar Dato\n"
-                + "6.Reemplazar Dato\n"
-                + "7.Ordenar ascendente\n"
-                + "8.Ordenar descendente\n"
-                + "9.Encolar Ordenado Ascendente\n"
-                + "10.Encolar Ordenado Descendente\n"
-                + "11.Salir"));
+                + "5.Ordenar ascendente\n"
+                + "6.Ordenar descendente\n"
+                + "7.Salir"));
         return opc;
+    }
+
+    public static int TipoBuscar() {
+        int resp;
+        resp = Integer.parseInt(JOptionPane.showInputDialog("*** Buscar Dato ***\n\n"
+                + "1.Reemplazar Dato \n"
+                + "2.Eliminar Dato \n"
+                + "3. Mostrar Dato \n"
+                + "4.Salir "));
+        return resp;
     }
 }
