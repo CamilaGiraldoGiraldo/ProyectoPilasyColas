@@ -161,6 +161,50 @@ public class Pila {
         }
         Apilar(mayor);
     }
+
+    public void OrdenarDescendente(Pila Aux) {
+        Pila Aux2 = new Pila(Limite + 1);
+        int menor = Desapilar();
+        while (!PilaVacia()) {
+            if (Vector[Tope] <= menor) {
+                Aux.Apilar(menor);
+                menor = Desapilar();
+            } else {
+                Aux.Apilar(Desapilar());
+            }
+        }
+        Apilar(menor);
+        while (!Aux.PilaVacia() || !Aux2.PilaVacia()) {
+            Descendente(Aux, Aux2);
+        }
+        JOptionPane.showMessageDialog(null, "Pila Ordenada con exito...");
+    }
+
+    public void Descendente(Pila Aux, Pila Aux2) {
+        int menor;
+        if (Aux.PilaVacia()) {
+            menor = Aux2.Desapilar();
+            while (!Aux2.PilaVacia()) {
+                if (Aux2.Vector[Aux2.Tope] <= menor) {
+                    Aux.Apilar(menor);
+                    menor = Aux2.Desapilar();
+                } else {
+                    Aux.Apilar(Aux2.Desapilar());
+                }
+            }
+        } else {
+            menor = Aux.Desapilar();
+            while (!Aux.PilaVacia()) {
+                if (Aux.Vector[Aux.Tope] <= menor) {
+                    Aux2.Apilar(menor);
+                    menor = Aux.Desapilar();
+                } else {
+                    Aux2.Apilar(Aux.Desapilar());
+                }
+            }
+        }
+        Apilar(menor);
+    }
 }
         
  
