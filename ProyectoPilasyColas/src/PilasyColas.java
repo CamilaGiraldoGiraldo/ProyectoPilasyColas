@@ -98,6 +98,9 @@ public class PilasyColas {
                                 }
                                 break;
                             case 7:
+                                P1.BallSoft();
+                                break;
+                            case 8:
                                 salir1 = true;
                                 break;
                             default:
@@ -166,9 +169,7 @@ public class PilasyColas {
                                             break;
                                         case 3:
                                             if (C1.ColaVacia() == false) {
-                                                d = Integer.parseInt(
-                                                        JOptionPane.showInputDialog(
-                                                                "Ingrese el dato que desea buscar..."));
+                                                d = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el dato que desea buscar..."));
                                                 C1.BuscarDatoCola(d, c_Aux2);
                                             } else {
                                                 JOptionPane.showMessageDialog(null, "Cola Vacia...");
@@ -227,9 +228,10 @@ public class PilasyColas {
                 + "2.Desapilar \n"
                 + "3.Mostrar Pila\n"
                 + "4.Buscar dato\n"
-                + "7.Ordenar Ascendente\n"
-                + "8.Ordenar Descendente\n"
-                + "9.Salir"));
+                + "5.Ordenar Ascendente\n"
+                + "6.Ordenar Descendente\n"
+                + "7.Ball soft \n"
+                + "8.Salir"));
         return opc;
     }
 
