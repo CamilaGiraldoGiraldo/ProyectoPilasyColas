@@ -129,82 +129,121 @@ public class Cola {
     }
 
     void OrdenarColaAscendente(Cola Aux1, Cola Aux2) {
-        int menor= Desacolar();
-       
-        while (!ColaVacia() ) {
-            if(Vector[0]<= menor){
+        int menor = Desacolar();
+
+        while (!ColaVacia()) {
+            if (Vector[0] <= menor) {
                 Aux1.Encolar(menor);
                 menor = Desacolar();
-            }else{
+            } else {
                 Aux1.Encolar(Desacolar());
             }
         }
         Encolar(menor);
-        while(!Aux1.ColaVacia() || !Aux2.ColaVacia()){
-            if(Aux1.ColaVacia()){
+        while (!Aux1.ColaVacia() || !Aux2.ColaVacia()) {
+            if (Aux1.ColaVacia()) {
                 menor = Aux2.Desacolar();
-                while(!Aux2.ColaVacia()){
-                    if(Aux2.Vector[0]<=menor){
+                while (!Aux2.ColaVacia()) {
+                    if (Aux2.Vector[0] <= menor) {
                         Aux1.Encolar(menor);
                         menor = Aux2.Desacolar();
-                    }else{
+                    } else {
                         Aux1.Encolar(Aux2.Desacolar());
                     }
                 }
-            }else{
+            } else {
                 menor = Aux1.Desacolar();
-                while(!Aux1.ColaVacia()){
-                    if(Aux1.Vector[0]<=menor){
+                while (!Aux1.ColaVacia()) {
+                    if (Aux1.Vector[0] <= menor) {
                         Aux2.Encolar(menor);
                         menor = Aux1.Desacolar();
-                    }else{
+                    } else {
                         Aux2.Encolar(Aux1.Desacolar());
                     }
                 }
             }
             Encolar(menor);
         }
-        
-        JOptionPane.showMessageDialog(null, "Cola ordenada con exito...");
+
     }
 
     void OrdenarColaDescendente(Cola Aux1, Cola Aux2) {
-        int mayor= Desacolar();
-       
-        while (!ColaVacia() ) {
-            if(Vector[0]>= mayor){
+        int mayor = Desacolar();
+
+        while (!ColaVacia()) {
+            if (Vector[0] >= mayor) {
                 Aux1.Encolar(mayor);
                 mayor = Desacolar();
-            }else{
+            } else {
                 Aux1.Encolar(Desacolar());
             }
         }
         Encolar(mayor);
-        while(!Aux1.ColaVacia() || !Aux2.ColaVacia()){
-            if(Aux1.ColaVacia()){
+        while (!Aux1.ColaVacia() || !Aux2.ColaVacia()) {
+            if (Aux1.ColaVacia()) {
                 mayor = Aux2.Desacolar();
-                while(!Aux2.ColaVacia()){
-                    if(Aux2.Vector[0]>=mayor){
+                while (!Aux2.ColaVacia()) {
+                    if (Aux2.Vector[0] >= mayor) {
                         Aux1.Encolar(mayor);
                         mayor = Aux2.Desacolar();
-                    }else{
+                    } else {
                         Aux1.Encolar(Aux2.Desacolar());
                     }
                 }
-            }else{
+            } else {
                 mayor = Aux1.Desacolar();
-                while(!Aux1.ColaVacia()){
-                    if(Aux1.Vector[0]>=mayor){
+                while (!Aux1.ColaVacia()) {
+                    if (Aux1.Vector[0] >= mayor) {
                         Aux2.Encolar(mayor);
                         mayor = Aux1.Desacolar();
-                    }else{
+                    } else {
                         Aux2.Encolar(Aux1.Desacolar());
                     }
                 }
             }
             Encolar(mayor);
         }
-        
-        JOptionPane.showMessageDialog(null, "Cola ordenada con exito...");
+    }
+
+    void InsertarOrdenadoAscendente(int d) {
+        Cola Aux = new Cola(Limite + 1);
+        boolean aprobacion = true;
+        if (ColaVacia()) {
+            Encolar(d);
+        } else {
+            while (!ColaVacia()) {
+                if (d <= Vector[0] && aprobacion) {
+                    Aux.Encolar(d);
+                    aprobacion = false;
+                } else {
+                    Aux.Encolar(Desacolar());
+                }
+            }
+            PasarDatos(Aux);
+            if(aprobacion == true){
+                Encolar(d);
+            }
+        }
+    }
+
+    void InsertarOrdenadoDescendente(int d) {
+        Cola Aux = new Cola(Limite + 1);
+        boolean aprobacion = true;
+        if (ColaVacia()) {
+            Encolar(d);
+        } else {
+            while (!ColaVacia()) {
+                if (d >= Vector[0] && aprobacion) {
+                    Aux.Encolar(d);
+                    aprobacion = false;
+                } else {
+                    Aux.Encolar(Desacolar());
+                }
+            }
+            PasarDatos(Aux);
+            if (aprobacion == true) {
+                Encolar(d);
+            }
+        }
     }
 }
