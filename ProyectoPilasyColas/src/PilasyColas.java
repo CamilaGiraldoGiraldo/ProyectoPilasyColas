@@ -70,6 +70,7 @@ public class PilasyColas {
                             case 7:
                                 if (P1.PilaVacia() == false) {
                                     P1.OrdenarAscendente(Aux);
+                                    JOptionPane.showMessageDialog(null, "Pila Ordenada con exito...");
                                 } else {
                                     JOptionPane.showMessageDialog(null, "Pila Vacia...");
                                 }
@@ -77,11 +78,40 @@ public class PilasyColas {
                             case 8:
                                 if (P1.PilaVacia() == false) {
                                     P1.OrdenarDescendente(Aux);
+                                    JOptionPane.showMessageDialog(null, "Pila Ordenada con exito...");
                                 } else {
                                     JOptionPane.showMessageDialog(null, "Pila Vacia...");
                                 }
                                 break;
-                            case 9:
+                                case 9:
+                                    if (P1.PilaLLena() == false && !P1.PilaVacia()) {
+                                        P1.OrdenarAscendente(Aux);
+                                        d = Integer.parseInt(JOptionPane.showInputDialog(null,
+                                                "Ingrese el nuevo dato que desea guardar..."));
+                                        P1.InsertarOrdenadoAscendente(d, Aux);
+                                    } else if (P1.PilaVacia()) {
+                                        d = Integer.parseInt(JOptionPane.showInputDialog(null,
+                                                "Ingrese el nuevo dato que desea guardar..."));
+                                        P1.InsertarOrdenadoAscendente(d, Aux);
+                                    } else {
+                                        JOptionPane.showMessageDialog(null, "Pila Llena...");
+                                    }
+                                break;
+                                case 10:
+                                if (P1.PilaLLena() == false && !P1.PilaVacia()) {
+                                    P1.OrdenarDescendente(Aux);
+                                    d = Integer.parseInt(JOptionPane.showInputDialog(null,
+                                            "Ingrese el nuevo dato que desea guardar..."));
+                                    P1.InsertarOrdenadoDescendente(d, Aux);
+                                } else if (P1.PilaVacia()) {
+                                    d = Integer.parseInt(JOptionPane.showInputDialog(null,
+                                            "Ingrese el nuevo dato que desea guardar..."));
+                                    P1.InsertarOrdenadoDescendente(d, Aux);
+                                } else {
+                                    JOptionPane.showMessageDialog(null, "Pila Llena...");
+                                }
+                                break;
+                            case 11:
                                 salir1 = true;
                                 break;
                             default:
@@ -227,7 +257,9 @@ public class PilasyColas {
                 + "6.Buscar Dato\n"
                 + "7.Ordenar Ascendente\n"
                 + "8.Ordenar Descendente\n"
-                + "9.Salir"));
+                + "9.Apilar Ordenado Ascendente\n"
+                + "10.Apilar Ordenado Descendente\n"
+                + "11.Salir"));
         return opc;
     }
 
