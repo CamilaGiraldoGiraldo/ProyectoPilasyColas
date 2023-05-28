@@ -269,7 +269,7 @@ public class Pila {
 
         JOptionPane.showMessageDialog(null, "Bienvenido al juego Ball Soft");
         JOptionPane.showMessageDialog(null, " Instrucciones : \n Organice los datos de tal manera que en la primera pila queden los 1 y en la segunda los 2.\n Apoyese en la pila principal");
-        
+
         while (Correcto1 != true && Correcto2 != true) {
             Completado(P1, P2, Aux1, Correcto1, Correcto2);
             Mover = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la pila que desea mover:\n 1-Pila 1 \n 2-Pila 2 \n 3- Pila Auxiliar \n\n"
@@ -294,6 +294,7 @@ public class Pila {
                     d = Aux.Desapilar();
                 }
             }
+
             recibir = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la pila que va a recibir :\n 1-Pila 1 \n 2-Pila 2 \n 3- Pila Auxiliar \n"));
 
             if (recibir == 1) {
@@ -372,7 +373,7 @@ public class Pila {
             }
             else
             {
-                Correcto2 = false;
+                Correcto2=false;
             }
             Aux1.Apilar(d);
         }
