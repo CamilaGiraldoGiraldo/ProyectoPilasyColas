@@ -252,130 +252,145 @@ public class Pila {
         Pila P1 = new Pila(4);
         Pila P2 = new Pila(4);
         Pila Aux = new Pila(4);
-        Pila Aux1 = new Pila(4);
-        boolean Correcto1 = false;
-        boolean Correcto2 = false;
-        int Mover = 0, recibir = 0, d = 0;
+        boolean verificacion = true;
+        int mover, d;
 
-        P1.Apilar(1);
-        P1.Apilar(2);
-        P1.Apilar(1);
-        P1.Apilar(2);
+        Apilar(1);
+        Apilar(0);
+        Apilar(1);
+        Apilar(0);
 
-        P2.Apilar(2);
-        P2.Apilar(1);
-        P2.Apilar(2);
-        P2.Apilar(1);
+        P1.Apilar(0);
+        P1.Apilar(1);
+        P1.Apilar(0);
+        P1.Apilar(1);
 
         JOptionPane.showMessageDialog(null, "Bienvenido al juego Ball Soft");
-        JOptionPane.showMessageDialog(null, " Instrucciones : \n Organice los datos de tal manera que en la primera pila queden los 1 y en la segunda los 2.\n Apoyese en la pila principal");
-        
-        while (Correcto1 != true && Correcto2 != true) {
-            Completado(P1, P2, Aux1, Correcto1, Correcto2);
-            Mover = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la pila que desea mover:\n 1-Pila 1 \n 2-Pila 2 \n 3- Pila Auxiliar \n\n"
-                            + P1.Mostrar(Aux1) + "Pila 1 \n\n" + P2.Mostrar(Aux1) + "Pila 2\n\n" + Aux.Mostrar(Aux1)
-                            + "Pila Auxiliar\n\n"));
-            if (Mover == 1) {
-                if (P1.PilaVacia() != false) {
-                    JOptionPane.showMessageDialog(null, "La pila 1 está vacia");
-                } else {
-                    d = P1.Desapilar();
-                }
-            } else if (Mover == 2) {
-                if (P2.PilaVacia() != false) {
-                    JOptionPane.showMessageDialog(null, "La pila 2 está vacia");
-                } else {
-                    d = P2.Desapilar();
-                }
-            } else {
-                if (Aux.PilaVacia() != false) {
-                    JOptionPane.showMessageDialog(null, "La pila auuxiliar está vacia");
-                } else {
-                    d = Aux.Desapilar();
-                }
-            }
-            recibir = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la pila que va a recibir :\n 1-Pila 1 \n 2-Pila 2 \n 3- Pila Auxiliar \n"));
+        JOptionPane.showMessageDialog(null,
+                " Instrucciones : \n Organice los datos de tal manera que las pilas queden con los datos organizados");
+        do {
+            mover = Integer.parseInt(JOptionPane
+                    .showInputDialog(
+                            "Ingrese la pila que desea mover:\n 1.Mover Dato Pila 1 \n 2.Mover Dato Pila 2 \n 3. Mover Dato Pila 3 \n\n"
+                                    + Mostrar(Aux) + "Pila 1 \n\n" + P1.Mostrar(Aux) + "Pila 2\n\n" + P2.Mostrar(Aux)
+                                    + "Pila 3\n\n"));
 
-            if (recibir == 1) {
-                if (P1.PilaLLena() != true) {
-                    P1.Apilar(d);
-                } else {
-                    JOptionPane.showMessageDialog(null, "La pila 1 está llena");
-                    if (Mover == 1)
-                    {
-                        P1.Apilar(d);
-                    }
-                    else if (Mover==2)
-                    {
-                        P2.Apilar(d);
-                    }
-                    else{
-                        Aux.Apilar(d);
-                    }
-                }
-            } else if (recibir == 2) {
-                if (P2.PilaLLena() != true) {
-                    P2.Apilar(d);
-                } else {
-                    JOptionPane.showMessageDialog(null, "La pila 2 está llena");
-                    if (Mover == 1)
-                    {
-                        P1.Apilar(d);
-                    }
-                    else if (Mover==2)
-                    {
-                        P2.Apilar(d);
-                    }
-                    else{
-                        Aux.Apilar(d);
-                    }
-                }
-            } else {
-                if (Aux.PilaLLena() != true) {
-                    Aux.Apilar(d);
-                } else {
-                    JOptionPane.showMessageDialog(null, "La pila auxiliar está llena");
-                    if (Mover == 1)
-                    {
-                        P1.Apilar(d);
-                    }
-                    else if (Mover==2)
-                    {
-                        P2.Apilar(d);
-                    }
-                    else{
-                        Aux.Apilar(d);
-                    }
-                }
-            }
-        }
+            switch (mover) {
 
+                case 1:
+                    d = Integer.parseInt(JOptionPane.showInputDialog(
+                            "Ingrese a la pila que desea mover el dato: \n 1.A la Pila 1\n2.A la Pila 2\n3.A la Pila 3"));
+                    if (d == 2) {
+                        if (P1.PilaVacia()) {
+                            P1.Apilar(Desapilar());
+                        } else if (P1.Vector[P1.Tope] == Vector[Tope] && !P1.PilaLLena()) {
+                            P1.Apilar(Desapilar());
+                        } else {
+                            JOptionPane.showInternalMessageDialog(null, "Imposible mover...");
+                        }
+
+                    } else if (d == 3) {
+                        if (P2.PilaVacia()) {
+                            P2.Apilar(Desapilar());
+                        } else if (P2.Vector[P2.Tope] == Vector[Tope] && !P2.PilaLLena()) {
+                            P2.Apilar(Desapilar());
+                        } else {
+                            JOptionPane.showInternalMessageDialog(null, "Imposible mover...");
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Movido a la misma pila...");
+                    }
+                    break;
+                case 2:
+                    d = Integer.parseInt(JOptionPane.showInputDialog(
+                            "Ingrese a la pila que desea mover el dato: \n 1.A la Pila 1\n2.A la Pila 2\n3.A la Pila 3"));
+                    if (d == 1) {
+                        if (PilaVacia()) {
+                            Apilar(P1.Desapilar());
+                        } else if (Vector[Tope] == P1.Vector[P1.Tope] && !PilaLLena()) {
+                            Apilar(P1.Desapilar());
+                        } else {
+                            JOptionPane.showInternalMessageDialog(null, "Imposible mover...");
+                        }
+
+                    } else if (d == 3) {
+                        if (P2.PilaVacia()) {
+                            P2.Apilar(P1.Desapilar());
+                        } else if (P2.Vector[P2.Tope] == P1.Vector[P1.Tope] && !P2.PilaLLena()) {
+                            P2.Apilar(P1.Desapilar());
+                        } else {
+                            JOptionPane.showInternalMessageDialog(null, "Imposible mover...");
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Movido a la misma pila...");
+                    }
+                    break;
+                case 3:
+                    d = Integer.parseInt(JOptionPane.showInputDialog(
+                            "Ingrese a la pila que desea mover el dato: \n 1.A la Pila 1\n2.A la Pila 2\n3.A la Pila 3"));
+                    if (d == 1) {
+                        if (PilaVacia()) {
+                            Apilar(P2.Desapilar());
+                        } else if (Vector[Tope] == P2.Vector[P2.Tope] && !PilaLLena()) {
+                            Apilar(P2.Desapilar());
+                        } else {
+
+                            JOptionPane.showInternalMessageDialog(null, "Imposible mover...");
+                        }
+
+                    } else if (d == 2) {
+                        if (P1.PilaVacia()) {
+                            P1.Apilar(P2.Desapilar());
+                        } else if (P1.Vector[P1.Tope] == P2.Vector[P2.Tope] && !P1.PilaLLena()) {
+                            P1.Apilar(P2.Desapilar());
+                        } else {
+                            JOptionPane.showInternalMessageDialog(null, "Imposible mover...");
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Movido a la misma pila...");
+                    }
+                    break;
+            }
+            verificacion = terminar(P1, P2);
+        } while (verificacion);
+        JOptionPane.showMessageDialog(null,
+                "****FELICITACIONES*****\nJuego terminado...\n" + Mostrar(Aux) + "Pila 1 \n\n" + P1.Mostrar(Aux)
+                        + "Pila 2\n\n" + P2.Mostrar(Aux)
+                        + "Pila 3\n\n");
     }
 
-    void Completado(Pila P1, Pila P2, Pila Aux1, boolean correcto1, boolean Correcto2) {
-        int d = 0;
-        while (P1.PilaVacia() != true && correcto1 != false) {
-            d = Desapilar();
-            if (d == 1) {
-                correcto1 = true;
-            }
-            else{
-                correcto1= false;
-            }
-            Aux1.Apilar(d);
+    public boolean terminar(Pila p1, Pila p2) {
+        boolean ver = true;
+        if (PilaLLena() && p1.PilaLLena()) {
+            ver = ver();
+
+            ver = p1.ver();
+        } else if (PilaLLena() && p2.PilaLLena()) {
+            ver = ver();
+
+            ver = p2.ver();
+        } else if (p1.PilaLLena() && p2.PilaLLena()) {
+            ver = p1.ver();
+            ver = p2.ver();
         }
-        P1.Pasar_datos(Aux1);
-        while (P2.PilaVacia() != true && Correcto2 != false) {
-            d = Desapilar();
-            if (d == 2) {
-                Correcto2 = true;
+        return ver;
+    }
+
+    boolean ver() {
+        Pila aux = new Pila(4);
+        boolean ver = true;
+        aux.Apilar(Desapilar());
+        while (!PilaVacia()) {
+            if (aux.Vector[aux.Tope] == Vector[Tope]) {
+                ver = false;
+
+            } else {
+                ver = true;
             }
-            else
-            {
-                Correcto2 = false;
-            }
-            Aux1.Apilar(d);
+            aux.Apilar(Desapilar());
         }
-        P2.Pasar_datos(Aux1);
+        Pasar_datos(aux);
+
+        return ver;
     }
 }

@@ -2,6 +2,10 @@
 import javax.swing.JOptionPane;
 
 public class PilasyColas {
+    /**
+     * @param args
+     * @throws Exception
+     */
     public static void main(String[] args) throws Exception {
         int n = 0, d, opc, tipo;
         Boolean salirp = false;
@@ -18,19 +22,66 @@ public class PilasyColas {
                         opc = Menu();
                         switch (opc) {
                             case 1:
-                                if (P1.PilaLLena() == false) {
-                                    d = Integer.parseInt(JOptionPane.showInputDialog("Ingrese un valor"));
-                                    P1.Apilar(d);
-                                } else {
-                                    JOptionPane.showMessageDialog(null, "Pila Llena...");
-                                }
+                                boolean salird = false;
+                                do {
+                                    opc = TipoInsertar();
+                                    switch (opc) {
+                                        case 1:
+                                            if (P1.PilaLLena() == false) {
+                                                d = Integer.parseInt(
+                                                        JOptionPane.showInputDialog("Ingrese El Valor a Añadir..."));
+                                                P1.Apilar(d);
+                                            } else {
+                                                JOptionPane.showMessageDialog(null, "Pila Llena...");
+                                            }
+                                            break;
+                                        case 2:
+                                            if (!P1.PilaVacia() && !P1.PilaLLena()) {
+                                                P1.OrdenarAscendente(Aux);
+                                                d = Integer.parseInt(
+                                                        JOptionPane.showInputDialog("Ingrese El Valor a Añadir..."));
+                                                P1.InsertarOrdenadoAscendente(d, Aux);
+
+                                            } else if (P1.PilaVacia()) {
+                                                d = Integer.parseInt(
+                                                        JOptionPane.showInputDialog("Ingrese El Valor a Añadir..."));
+                                                P1.Apilar(d);
+                                            } else {
+                                                JOptionPane.showMessageDialog(null, "Pila Llena...");
+                                            }
+                                            break;
+                                        case 3:
+                                            if (!P1.PilaVacia() && !P1.PilaLLena()) {
+                                                P1.OrdenarDescendente(Aux);
+                                                ;
+                                                d = Integer.parseInt(
+                                                        JOptionPane.showInputDialog("Ingrese El Valor a Añadir..."));
+                                                P1.InsertarOrdenadoDescendente(d, Aux);
+
+                                            } else if (P1.PilaVacia()) {
+                                                d = Integer.parseInt(
+                                                        JOptionPane.showInputDialog("Ingrese El Valor a Añadir..."));
+                                                P1.Apilar(d);
+                                            } else {
+                                                JOptionPane.showMessageDialog(null, "Pila Llena...");
+                                            }
+                                            break;
+                                        case 4:
+                                            salird = true;
+                                            break;
+                                        default:
+                                            JOptionPane.showMessageDialog(null, "Ingrese una Opcion Valida...");
+                                            break;
+                                    }
+                                } while (!salird);
+
                                 break;
                             case 2:
                                 if (P1.PilaVacia() == true) {
                                     JOptionPane.showMessageDialog(null, "Pila Vacia...");
                                 } else {
                                     P1.Desapilar();
-                                    JOptionPane.showMessageDialog(null, "Dato desapilado con exito...");
+                                    JOptionPane.showMessageDialog(null, "Dato Desapilado con Exito...");
                                 }
                                 break;
                             case 3:
@@ -49,7 +100,7 @@ public class PilasyColas {
                                             if (P1.PilaVacia() == false) {
                                                 d = Integer.parseInt(
                                                         JOptionPane.showInputDialog(
-                                                                "Ingrese un valor que desea reemplazar: "));
+                                                                "Ingrese El Valor que Desea Reemplazar: "));
                                                 P1.ReemplazarDatoPila(d, Aux);
                                             } else {
                                                 JOptionPane.showMessageDialog(null, "Pila Vacia...");
@@ -59,7 +110,7 @@ public class PilasyColas {
                                             if (P1.PilaVacia() == false) {
                                                 d = Integer.parseInt(
                                                         JOptionPane.showInputDialog(
-                                                                "Ingrese el dato que desea eliminar..."));
+                                                                "Ingrese el Dato que Desea Eliminar..."));
                                                 P1.EliminarDatoPila(d, Aux);
                                             } else {
                                                 JOptionPane.showMessageDialog(null, "Pila Vacia...");
@@ -86,6 +137,7 @@ public class PilasyColas {
                             case 5:
                                 if (P1.PilaVacia() == false) {
                                     P1.OrdenarAscendente(Aux);
+                                    JOptionPane.showMessageDialog(null, "Pila Ordenada con Exito...");
                                 } else {
                                     JOptionPane.showMessageDialog(null, "Pila Vacia...");
                                 }
@@ -93,14 +145,12 @@ public class PilasyColas {
                             case 6:
                                 if (P1.PilaVacia() == false) {
                                     P1.OrdenarDescendente(Aux);
+                                    JOptionPane.showMessageDialog(null, "Pila Ordenada con Exito...");
                                 } else {
                                     JOptionPane.showMessageDialog(null, "Pila Vacia...");
                                 }
                                 break;
                             case 7:
-                                P1.BallSoft();
-                                break;
-                            case 8:
                                 salir1 = true;
                                 break;
                             default:
@@ -119,19 +169,60 @@ public class PilasyColas {
                         opc = Menu1();
                         switch (opc) {
                             case 1:
-                                if (C1.ColaLLena() == false) {
-                                    d = Integer.parseInt(JOptionPane.showInputDialog("Ingrese un valor"));
-                                    C1.Encolar(d);
-                                } else {
-                                    JOptionPane.showMessageDialog(null, "Cola  Llena...");
-                                }
+                                boolean salirf = false;
+                                do{
+                                    opc = TipoInsertar();
+                                    switch(opc){
+                                        case 1:
+                                            if (C1.ColaLLena() == false) {
+                                                d = Integer.parseInt(JOptionPane.showInputDialog("Ingrese un valor"));
+                                                C1.Encolar(d);
+                                            } else {
+                                                JOptionPane.showMessageDialog(null, "Cola  Llena...");
+                                            }
+                                        break;
+                                        case 2:
+                                        if (!C1.ColaLLena() && !C1.ColaVacia()){
+                                            C1.OrdenarColaAscendente(C_Aux, c_Aux2);
+                                            d = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el Valor a Añadir..."));
+                                            C1.InsertarOrdenadoAscendente(d);
+                                        }else if(C1.ColaVacia()){
+                                            d = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el Valor a Añadir..."));
+                                            C1.Encolar(d);
+                                        }else{
+                                            JOptionPane.showMessageDialog(null, "Cola Llena...");
+                                        }
+                                        break;
+                                        case 3:
+                                            if (!C1.ColaLLena() && !C1.ColaVacia()) {
+                                                C1.OrdenarColaDescendente(C_Aux, c_Aux2);
+                                                d = Integer.parseInt(
+                                                        JOptionPane.showInputDialog("Ingrese el Valor a Añadir..."));
+                                                C1.InsertarOrdenadoDescendente(d);
+                                            } else if (C1.ColaVacia()) {
+                                                d = Integer.parseInt(
+                                                        JOptionPane.showInputDialog("Ingrese el Valor a Añadir..."));
+                                                C1.Encolar(d);
+                                            } else {
+                                                JOptionPane.showMessageDialog(null, "Cola Llena...");
+                                            }
+                                        break;
+                                        case 4:
+                                        salirf = true;
+                                        break;
+                                        default:
+                                            JOptionPane.showMessageDialog(null, "Ingrese una Opcion Valida...");
+                                        break;
+                                    }
+                                    
+                                }while (!salirf);
                                 break;
                             case 2: {
                                 if (C1.ColaVacia() == true) {
                                     JOptionPane.showMessageDialog(null, "Cola Vacia...");
                                 } else {
                                     C1.Desacolar();
-                                    JOptionPane.showMessageDialog(null, "Dato desencolado con exito...");
+                                    JOptionPane.showMessageDialog(null, "Dato Desencolado con Exito...");
                                 }
                             }
                                 break;
@@ -151,7 +242,7 @@ public class PilasyColas {
                                             if (C1.ColaVacia() == false) {
                                                 d = Integer.parseInt(
                                                         JOptionPane.showInputDialog(
-                                                                "Ingrese un valor que desea reemplazar: "));
+                                                                "Ingrese el Valor que Desea Reemplazar: "));
                                                 C1.ReemplazarDatoCola(d, c_Aux2);
                                             } else {
                                                 JOptionPane.showMessageDialog(null, "Cola Vacia...");
@@ -161,7 +252,7 @@ public class PilasyColas {
                                             if (C1.ColaVacia() == false) {
                                                 d = Integer.parseInt(
                                                         JOptionPane.showInputDialog(
-                                                                "Ingrese el dato que desea eliminar..."));
+                                                                "Ingrese el Dato que Desea Eliminar..."));
                                                 C1.EliminarDatoCola(d, c_Aux2);
                                             } else {
                                                 JOptionPane.showMessageDialog(null, "Cola Vacia...");
@@ -169,8 +260,9 @@ public class PilasyColas {
                                             break;
                                         case 3:
                                             if (C1.ColaVacia() == false) {
-                                                d = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el dato que desea buscar..."));
-                                                C1.BuscarDatoCola(d, c_Aux2);
+                                                d = Integer.parseInt(JOptionPane
+                                                        .showInputDialog("Ingrese el dato que desea buscar..."));
+                                                C1.BuscarDatoCola(d, C_Aux);
                                             } else {
                                                 JOptionPane.showMessageDialog(null, "Cola Vacia...");
                                             }
@@ -186,6 +278,7 @@ public class PilasyColas {
                             case 5:
                                 if (C1.ColaVacia() == false) {
                                     C1.OrdenarColaAscendente(C_Aux, c_Aux2);
+                                    JOptionPane.showMessageDialog(null, "Cola Ordenada con Exito...");
 
                                 } else {
                                     JOptionPane.showMessageDialog(null, "Cola vacia...");
@@ -194,6 +287,7 @@ public class PilasyColas {
                             case 6:
                                 if (C1.ColaVacia() == false) {
                                     C1.OrdenarColaDescendente(C_Aux, c_Aux2);
+                                    JOptionPane.showMessageDialog(null, "Cola Ordenada con Exito...");
                                 } else {
                                     JOptionPane.showMessageDialog(null, "Cola vacia...");
                                 }
@@ -208,6 +302,30 @@ public class PilasyColas {
                     } while (!salir);
                     break;
                 case 3:
+                    Pila P = new Pila(4);
+                    boolean salirc = false;
+                    int opcion;
+                    do {
+
+                        opcion = Integer
+                                .parseInt(JOptionPane.showInputDialog("***Menú Juegos***\n\n"
+                                        + "1.BallSort\n"
+                                        + "2.Salir"));
+                        switch (opcion) {
+                            case 1:
+                                P.BallSoft();
+                                break;
+                            case 2:
+                                salirc = true;
+                                break;
+                            default:
+                                JOptionPane.showMessageDialog(null, "Ingrese una Opcion valida...");
+                                break;
+                        }
+                    } while (!salirc);
+
+                    break;
+                case 4:
 
                     salirp = true;
                     JOptionPane.showMessageDialog(null, "Gracias por utilizar nuestro sistema...");
@@ -224,14 +342,13 @@ public class PilasyColas {
     public static int Menu() {
         int opc;
         opc = Integer.parseInt(JOptionPane.showInputDialog("*** Menu para Pilas ***\n\n"
-                + "1.Apilar\n"
-                + "2.Desapilar \n"
-                + "3.Mostrar Pila\n"
-                + "4.Buscar dato\n"
-                + "5.Ordenar Ascendente\n"
-                + "6.Ordenar Descendente\n"
-                + "7.Ball soft \n"
-                + "8.Salir"));
+                + "1.Apilar Datos Pila\n"
+                + "2.Desapilar Datos Pila\n"
+                + "3.Mostrar Datos Pila\n"
+                + "4.Buscar Datos Pila\n"
+                + "5.Ordenar Datos Pila Ascendente\n"
+                + "6.Ordenar Datos Pila Descendente\n"
+                + "7.Salir"));
         return opc;
     }
 
@@ -239,20 +356,21 @@ public class PilasyColas {
         int opc;
         opc = Integer.parseInt(JOptionPane.showInputDialog("*** Menu principal \n seleccione cual desea usar ***\n\n"
                 + "1.Pilas\n"
-                + "2.Colas  \n"
-                + "3.Salir"));
+                + "2.Colas\n"
+                + "3.Juegos\n"
+                + "4.Salir"));
         return opc;
     }
 
     public static int Menu1() {
         int opc;
         opc = Integer.parseInt(JOptionPane.showInputDialog("*** Menu para Colas ***\n\n"
-                + "1.Encolar\n"
-                + "2.Desencolar \n"
-                + "3.Mostrar Cola\n"
-                + "4.Buscar Dato\n"
-                + "5.Ordenar ascendente\n"
-                + "6.Ordenar descendente\n"
+                + "1.Encolar Datos Cola\n"
+                + "2.Desencolar Datos Cola\n"
+                + "3.Mostrar Datos Cola\n"
+                + "4.Buscar Datos Cola\n"
+                + "5.Ordenar Datos Cola Ascendente\n"
+                + "6.Ordenar Datos Cola Descendente\n"
                 + "7.Salir"));
         return opc;
     }
@@ -262,8 +380,18 @@ public class PilasyColas {
         resp = Integer.parseInt(JOptionPane.showInputDialog("*** Buscar Dato ***\n\n"
                 + "1.Reemplazar Dato \n"
                 + "2.Eliminar Dato \n"
-                + "3. Mostrar Dato \n"
+                + "3.Mostrar Dato \n"
                 + "4.Salir "));
+        return resp;
+    }
+
+    public static int TipoInsertar() {
+        int resp;
+        resp = Integer.parseInt(JOptionPane.showInputDialog("***Insertar Dato***\n\n"
+                + "1.Insertar Dato Desordenado\n"
+                + "2.Insertar Dato Ordenado Ascendente\n"
+                + "3.Insertar Dato Ordenado Descendente\n"
+                + "4.Salir"));
         return resp;
     }
 }
