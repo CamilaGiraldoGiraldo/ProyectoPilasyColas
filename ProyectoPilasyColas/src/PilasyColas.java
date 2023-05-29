@@ -310,12 +310,13 @@ public class PilasyColas {
                         opcion = Integer
                                 .parseInt(JOptionPane.showInputDialog("***Menú Juegos***\n\n"
                                         + "1.BallSort\n"
-                                        + "2.Salir"));
+                                        + "2. Torres de hanoi\n"
+                                        + "3. Salir"));
                         switch (opcion) {
                             case 1:
                                 P.BallSoft();
                                 break;
-                            case 3:
+                            case 2:
                                 salirc = true;
                                 break;
                             default:
