@@ -317,6 +317,9 @@ public class PilasyColas {
                                 P.BallSoft();
                                 break;
                             case 2:
+                                P.TorresdeHanoi();
+                                break;
+                            case 3:
                                 salirc = true;
                                 break;
                             default:
