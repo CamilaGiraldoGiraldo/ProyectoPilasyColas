@@ -1,4 +1,5 @@
 
+import javax.lang.model.util.ElementScanner14;
 import javax.swing.JOptionPane;
 
 public class Pila {
@@ -9,6 +10,10 @@ public class Pila {
         this.Limite = n - 1;
         this.Tope = -1;
         this.Vector = new int[n];
+    }
+
+    public int getTope() {
+        return Vector[Tope];
     }
 
     public boolean PilaVacia() {
@@ -265,9 +270,6 @@ public class Pila {
         P1.Apilar(0);
         P1.Apilar(1);
 
-        JOptionPane.showMessageDialog(null, "Bienvenido al juego Ball Soft");
-        JOptionPane.showMessageDialog(null,
-                " Instrucciones : \n Organice los datos de tal manera que las pilas queden con los datos organizados");
         do {
             mover = Integer.parseInt(JOptionPane
                     .showInputDialog(
@@ -393,4 +395,7 @@ public class Pila {
 
         return ver;
     }
+
+        
 }
+

@@ -315,7 +315,7 @@ public class PilasyColas {
                             case 1:
                                 P.BallSoft();
                                 break;
-                            case 2:
+                            case 3:
                                 salirc = true;
                                 break;
                             default:
