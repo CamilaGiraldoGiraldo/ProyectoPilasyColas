@@ -47,66 +47,67 @@ public class Lista {
             Fin = estudiante;
         } else {
             posicion = Fin;
-            Fin = estudiante;   
+            Fin = estudiante;
             posicion.setLiga(Fin);
         }
 
     }
-    
-    public void ReporteNotas(){
-        String reporte = "";
-        String reporte2 = "";
-        String reporteF = "";
-        if(Punta != null){
-            NodoG recorrer = Punta;
-            NodoL nota;
-            ColaLista aux = new  ColaLista();
-            Nodo paso;
-            PilaLista notas = new PilaLista();
-            PilaLista aux2 = new PilaLista();
-            ListaR L = new ListaR();
-            NodoR recorrer2;
-            
-            
-           
-            do {
-                L = null;
-                reporte = reporte + " cedula: " + recorrer.getCedula() + " Nombre: " + recorrer.getNombre()
-                        + " Apellidos: "
-                        + recorrer.getApellido() + " Carrera: " + recorrer.getCarrera();
-                if(recorrer.getMaterias().colaListaVacia()== false){
-                    
-                    do{
-                        float suma = 0;
-                        int cont = 0;
-                        paso = recorrer.getMaterias().desacolarLista();
-                        do{
-                            nota = paso.getNotas().DesapilarLista();
-                            suma = suma + nota.getNota();
-                            cont ++;
-                            notas.apilarLista(nota);
-                        }while(paso.getNotas().PilaListaVacia()== false);
-                        L.Agregar(paso.getMateria(), suma/cont);
-                        aux2.PasarDatosPilaLista(notas);
-                        paso.setNotas(aux2);
-                        aux.encolarLista(paso);
-                    }
 
-                    while(recorrer.getMaterias().colaListaVacia() == false);
-                    recorrer.setMaterias(aux);
+    public void ReporteNotas() {
+        NodoG recorrer;
+        Nodo nodocola;
+        NodoL nodolista;
+        String primero;
+        String segundo;
+        String mensajeFinal ="";
+        if (Punta != null) {
+            recorrer = Punta;
+
+            do {
+                segundo ="";
+                primero ="";
+
+                if (recorrer.getMaterias().colaListaVacia() == false) {
+                    
+                    ListaR Resultados = new ListaR();
+                    NodoR posicion = Resultados.Punta;
+                    ColaLista auxcola = new ColaLista();
+                    primero = "Nombre:  " + recorrer.getNombre() + "  Apellido:  " + recorrer.getApellido()
+                            + "  Cedula:  " + recorrer.getCedula() + "  Carrera  " + recorrer.getCarrera();
+                    do {
+                        nodocola = recorrer.getMaterias().desacolarLista();
+                        float suma = 0;
+                        float cont = 0;
+                        PilaLista aux = new PilaLista();
+                        PilaLista aux2 = new PilaLista();
+                        if (nodocola.getNotas().PilaListaVacia() == false) {
+                            do {
+                                nodolista = nodocola.getNotas().DesapilarLista();
+                                suma = suma + nodolista.getNota();
+                                cont++;
+                                aux.apilarLista(nodolista);
+                            } while (nodocola.getNotas().PilaListaVacia() == false);
+
+                            aux2.PasarDatosPilaLista(aux);
+                            nodocola.setNotas(aux2);
+                        }
+                        Resultados.Agregar(nodocola.getMateria(), suma / cont);
+                        auxcola.encolarLista(nodocola);
+
+                    } while (recorrer.getMaterias().colaListaVacia() == false);
+
+                    recorrer.setMaterias(auxcola);
+                    do {
+                        segundo = "  " + segundo + posicion.getNombreMateria() + "  " + posicion.getNota();
+                        posicion = posicion.getLiga();
+                    } while (posicion != null);
                 }
+
                 recorrer = recorrer.getLiga();
 
-                if(L.Punta != null){
-                    recorrer2 = L.Punta;
-                    do {
-                        reporte2 = recorrer2.getNombreMateria() + recorrer2.getNota();
-                        recorrer2= recorrer2.getLiga();
-                    }while(recorrer2 != null);
-                } 
-                reporteF = reporteF + reporte + reporte2 + "\n";
-            }while(recorrer != null);
+                mensajeFinal = mensajeFinal + primero + "  " + segundo + "\n";
+            } while (recorrer != null);
         }
-        JOptionPane.showMessageDialog(null, reporteF);
+        JOptionPane.showMessageDialog(null, mensajeFinal);
     }
 }

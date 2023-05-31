@@ -13,7 +13,8 @@ public class ColaLista {
         String materia = JOptionPane.showInputDialog("Ingrese el nombre de las materia");
         PilaLista notas = new PilaLista();
         boolean salir = true;
-        int decision, nota;
+        int decision;
+        float nota;
 
         do {
             decision = Integer.parseInt(JOptionPane.showInputDialog("***Desea Ingresar una nueva nota?***\n\n"
@@ -22,7 +23,7 @@ public class ColaLista {
 
             switch (decision) {
                 case 1:
-                    nota = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la nota"));
+                    nota = Float.parseFloat(JOptionPane.showInputDialog("Ingrese la nota"));
                     notas.NuevaNota(nota);
                     break;
                 case 2:
