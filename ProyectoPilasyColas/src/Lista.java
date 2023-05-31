@@ -70,6 +70,7 @@ public class Lista {
             
            
             do {
+                L = null;
                 reporte = reporte + " cedula: " + recorrer.getCedula() + " Nombre: " + recorrer.getNombre()
                         + " Apellidos: "
                         + recorrer.getApellido() + " Carrera: " + recorrer.getCarrera();
@@ -99,7 +100,7 @@ public class Lista {
                 if(L.Punta != null){
                     recorrer2 = L.Punta;
                     do {
-                        reporte2 = reporte2 + recorrer2.getNombreMateria() + recorrer2.getNota();
+                        reporte2 = recorrer2.getNombreMateria() + recorrer2.getNota();
                         recorrer2= recorrer2.getLiga();
                     }while(recorrer2 != null);
                 } 

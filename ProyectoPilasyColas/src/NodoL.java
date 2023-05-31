@@ -1,10 +1,12 @@
 public class NodoL {
     float nota;
     NodoL liga;
+
     public NodoL(float nota) {
         this.nota = nota;
         this.liga = null;
     }
+    
     public float getNota() {
         return nota;
     }
