@@ -52,17 +52,23 @@ public class Lista {
         }
 
     }
-
-    public void ReporteNotas() {
-        NodoG recorrer;
-        Nodo nodocola;
-        NodoL nodolista;
-        String primero;
-        String segundo;
-        String mensajeFinal ="";
-        if (Punta != null) {
-            recorrer = Punta;
-
+    
+    public void ReporteNotas(){
+        String reporte = "";
+        String reporte2 = "";
+        String reporteF = "";
+        if(Punta != null){
+            NodoG recorrer = Punta;
+            NodoL nota;
+            ColaLista aux = new  ColaLista();
+            nodo paso;
+            PilaLista notas = new PilaLista();
+            PilaLista aux2 = new PilaLista();
+            ListaR L = new ListaR();
+            NodoR recorrer2;
+            
+            
+           
             do {
                 segundo ="";
                 primero ="";
@@ -108,6 +114,9 @@ public class Lista {
                 mensajeFinal = mensajeFinal + primero + "  " + segundo + "\n";
             } while (recorrer != null);
         }
-        JOptionPane.showMessageDialog(null, mensajeFinal);
+        JOptionPane.showMessageDialog(null, reporteF);
+        reporte = "";
+        reporte2 = "";
+        reporteF = "";
     }
 }

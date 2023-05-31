@@ -1,8 +1,8 @@
 import javax.swing.JOptionPane;
 
 public class ColaLista {
-    Nodo Punta;
-    Nodo Fin;
+    nodo Punta;
+    nodo Fin;
 
     public ColaLista() {
         Punta = null;
@@ -34,9 +34,8 @@ public class ColaLista {
                     break;
             }
         } while (salir);
-        Nodo nuevo = new Nodo(materia, notas);
+        nodo nuevo = new nodo(materia, notas);
         encolarLista(nuevo);
-        
     }
 
     boolean colaListaVacia() {
@@ -48,8 +47,8 @@ public class ColaLista {
         return aprobacion;
     }
 
-    void encolarLista (Nodo nuevo){
-        Nodo posicion;
+    void encolarLista (nodo nuevo){
+        nodo posicion;
         if (Punta == null) {
             Punta = nuevo;
             Fin = nuevo;
@@ -61,8 +60,8 @@ public class ColaLista {
         }
     }
 
-    Nodo desacolarLista() {
-        Nodo materia;
+    nodo desacolarLista() {
+        nodo materia;
         
         materia = Punta;
         Punta = Punta.getLiga();
