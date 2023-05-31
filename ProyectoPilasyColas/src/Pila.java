@@ -88,7 +88,7 @@ public class Pila {
     public void EliminarDatoPila(int d, Pila Aux) {
         boolean aprobacion = true;
         while (!PilaVacia() && aprobacion) {
-            if (d == Vector[Tope]) {
+            if (d == getTope()) {
                 Desapilar();
                 aprobacion = false;
             } else {
@@ -106,7 +106,7 @@ public class Pila {
     public void BuscarDatoPila(int d, Pila Aux) {
         Boolean aprobacion = true;
         while (!PilaVacia() && aprobacion) {
-            if (d == Vector[Tope]) {
+            if (d == getTope()) {
                 aprobacion = false;
             } else {
                 Aux.Apilar(Desapilar());
@@ -124,7 +124,7 @@ public class Pila {
         Pila Aux2 = new Pila(Limite + 1);
         int mayor = Desapilar();
         while (!PilaVacia()) {
-            if (Vector[Tope] >= mayor) {
+            if (getTope() >= mayor) {
                 Aux.Apilar(mayor);
                 mayor = Desapilar();
             } else {
@@ -143,7 +143,7 @@ public class Pila {
         if (Aux.PilaVacia()) {
             mayor = Aux2.Desapilar();
             while (!Aux2.PilaVacia()) {
-                if (Aux2.Vector[Aux2.Tope] >= mayor) {
+                if (Aux2.getTope() >= mayor) {
                     Aux.Apilar(mayor);
                     mayor = Aux2.Desapilar();
                 } else {
@@ -153,7 +153,7 @@ public class Pila {
         } else {
             mayor = Aux.Desapilar();
             while (!Aux.PilaVacia()) {
-                if (Aux.Vector[Aux.Tope] >= mayor) {
+                if (Aux.getTope() >= mayor) {
                     Aux2.Apilar(mayor);
                     mayor = Aux.Desapilar();
                 } else {
@@ -168,7 +168,7 @@ public class Pila {
         Pila Aux2 = new Pila(Limite + 1);
         int menor = Desapilar();
         while (!PilaVacia()) {
-            if (Vector[Tope] <= menor) {
+            if (getTope() <= menor) {
                 Aux.Apilar(menor);
                 menor = Desapilar();
             } else {
@@ -187,7 +187,7 @@ public class Pila {
         if (Aux.PilaVacia()) {
             menor = Aux2.Desapilar();
             while (!Aux2.PilaVacia()) {
-                if (Aux2.Vector[Aux2.Tope] <= menor) {
+                if (Aux2.getTope() <= menor) {
                     Aux.Apilar(menor);
                     menor = Aux2.Desapilar();
                 } else {
@@ -197,7 +197,7 @@ public class Pila {
         } else {
             menor = Aux.Desapilar();
             while (!Aux.PilaVacia()) {
-                if (Aux.Vector[Aux.Tope] <= menor) {
+                if (Aux.getTope() <= menor) {
                     Aux2.Apilar(menor);
                     menor = Aux.Desapilar();
                 } else {
@@ -214,10 +214,10 @@ public class Pila {
             Apilar(d);
         } else {
             while (!PilaVacia() && aprobacion) {
-                if (d > Vector[Tope]) {
+                if (d > getTope()) {
                     Aux.Apilar(Desapilar());
 
-                } else if (d <= Vector[Tope]) {
+                } else if (d <= getTope()) {
                     Apilar(d);
                     aprobacion = false;
                 }
@@ -236,10 +236,10 @@ public class Pila {
             Apilar(d);
         } else {
             while (!PilaVacia() && aprobacion) {
-                if (d < Vector[Tope]) {
+                if (d < getTope()) {
                     Aux.Apilar(Desapilar());
 
-                } else if (d >= Vector[Tope]) {
+                } else if (d >= getTope()) {
                     Apilar(d);
                     aprobacion = false;
                 }
@@ -284,7 +284,7 @@ public class Pila {
                     if (d == 2) {
                         if (P1.PilaVacia()) {
                             P1.Apilar(Desapilar());
-                        } else if (P1.Vector[P1.Tope] == Vector[Tope] && !P1.PilaLLena()) {
+                        } else if (P1.getTope()== getTope() && !P1.PilaLLena()) {
                             P1.Apilar(Desapilar());
                         } else {
                             JOptionPane.showInternalMessageDialog(null, "Imposible mover...");
@@ -293,7 +293,7 @@ public class Pila {
                     } else if (d == 3) {
                         if (P2.PilaVacia()) {
                             P2.Apilar(Desapilar());
-                        } else if (P2.Vector[P2.Tope] == Vector[Tope] && !P2.PilaLLena()) {
+                        } else if (P2.getTope() == getTope() && !P2.PilaLLena()) {
                             P2.Apilar(Desapilar());
                         } else {
                             JOptionPane.showInternalMessageDialog(null, "Imposible mover...");
@@ -308,7 +308,7 @@ public class Pila {
                     if (d == 1) {
                         if (PilaVacia()) {
                             Apilar(P1.Desapilar());
-                        } else if (Vector[Tope] == P1.Vector[P1.Tope] && !PilaLLena()) {
+                        } else if (getTope()== P1.getTope() && !PilaLLena()) {
                             Apilar(P1.Desapilar());
                         } else {
                             JOptionPane.showInternalMessageDialog(null, "Imposible mover...");
@@ -317,7 +317,7 @@ public class Pila {
                     } else if (d == 3) {
                         if (P2.PilaVacia()) {
                             P2.Apilar(P1.Desapilar());
-                        } else if (P2.Vector[P2.Tope] == P1.Vector[P1.Tope] && !P2.PilaLLena()) {
+                        } else if (P2.getTope() == P1.getTope() && !P2.PilaLLena()) {
                             P2.Apilar(P1.Desapilar());
                         } else {
                             JOptionPane.showInternalMessageDialog(null, "Imposible mover...");
@@ -332,7 +332,7 @@ public class Pila {
                     if (d == 1) {
                         if (PilaVacia()) {
                             Apilar(P2.Desapilar());
-                        } else if (Vector[Tope] == P2.Vector[P2.Tope] && !PilaLLena()) {
+                        } else if (getTope() == P2.getTope() && !PilaLLena()) {
                             Apilar(P2.Desapilar());
                         } else {
 
@@ -342,7 +342,7 @@ public class Pila {
                     } else if (d == 2) {
                         if (P1.PilaVacia()) {
                             P1.Apilar(P2.Desapilar());
-                        } else if (P1.Vector[P1.Tope] == P2.Vector[P2.Tope] && !P1.PilaLLena()) {
+                        } else if (P1.getTope() == P2.getTope() && !P1.PilaLLena()) {
                             P1.Apilar(P2.Desapilar());
                         } else {
                             JOptionPane.showInternalMessageDialog(null, "Imposible mover...");
@@ -382,7 +382,7 @@ public class Pila {
         boolean ver = true;
         aux.Apilar(Desapilar());
         while (!PilaVacia()) {
-            if (aux.Vector[aux.Tope] == Vector[Tope]) {
+            if (aux.getTope() == getTope()) {
                 ver = false;
 
             } else {
@@ -443,6 +443,7 @@ public class Pila {
                                 Apilar(valor);
                             }
                         } else {
+                            Apilar(valor);
                             JOptionPane.showMessageDialog(null, "Movido a la misma pila...");
                         }
                     }
@@ -474,6 +475,7 @@ public class Pila {
                             }
                         } else {
                             JOptionPane.showMessageDialog(null, "Movido a la misma pila...");
+                            P2.Apilar(valor);
                         }
                     }
                     break;
@@ -502,6 +504,10 @@ public class Pila {
                                 JOptionPane.showInternalMessageDialog(null, "Imposible mover...");
                                 P3.Apilar(valor);
                             }
+                        }else{
+                            
+                            JOptionPane.showMessageDialog(null, "Movido a la misma pila...");
+                            P3.Apilar(valor);
                         }
                     }
                     break;

@@ -4,10 +4,34 @@ public class Nodo {
     public Nodo Liga;
     public PilaLista Notas;
 
-    public Nodo() {
-        Materia = "";
+    public Nodo(String materia, PilaLista notas) {
+        Materia = materia;
         Liga = null;
-        Notas = null;
+        Notas = notas;
+    }
+
+    public String getMateria() {
+        return Materia;
+    }
+
+    public void setMateria(String materia) {
+        Materia = materia;
+    }
+
+    public Nodo getLiga() {
+        return Liga;
+    }
+
+    public void setLiga(Nodo liga) {
+        Liga = liga;
+    }
+
+    public PilaLista getNotas() {
+        return Notas;
+    }
+
+    public void setNotas(PilaLista notas) {
+        Notas = notas;
     }
    
 }

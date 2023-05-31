@@ -6,13 +6,15 @@ public class NodoG {
     public String Carrera;
     public ColaLista Materias;
     
-    public NodoG() {
-        Cedula ="";
-        Nombre = "";
-        Apellido = "";
+    
+
+    public NodoG(String cedula, String nombre, String apellido,  String carrera, ColaLista materias) {
+        Cedula = cedula;
+        Nombre = nombre;
+        Apellido = apellido;
         Liga = null;
-        Carrera = "";
-        Materias = null;
+        Carrera = carrera;
+        Materias = materias;
     }
 
     public String getCedula() {
