@@ -61,15 +61,12 @@ public class Lista {
             NodoG recorrer = Punta;
             NodoL nota;
             ColaLista aux = new  ColaLista();
-            Nodo paso;
+            nodo paso;
             PilaLista notas = new PilaLista();
             PilaLista aux2 = new PilaLista();
             ListaR L = new ListaR();
             NodoR recorrer2;
-            
-            
-           
-            do {
+                    do {
                 reporte = reporte + " cedula: " + recorrer.getCedula() + " Nombre: " + recorrer.getNombre()
                         + " Apellidos: "
                         + recorrer.getApellido() + " Carrera: " + recorrer.getCarrera();
@@ -107,5 +104,8 @@ public class Lista {
             }while(recorrer != null);
         }
         JOptionPane.showMessageDialog(null, reporteF);
+        reporte = "";
+        reporte2 = "";
+        reporteF = "";
     }
 }

@@ -1,8 +1,8 @@
 import javax.swing.JOptionPane;
 
 public class ColaLista {
-    Nodo Punta;
-    Nodo Fin;
+    nodo Punta;
+    nodo Fin;
 
     public ColaLista() {
         Punta = null;
@@ -13,7 +13,8 @@ public class ColaLista {
         String materia = JOptionPane.showInputDialog("Ingrese el nombre de las materia");
         PilaLista notas = new PilaLista();
         boolean salir = true;
-        int decision, nota;
+        int decision;
+        float nota;
 
         do {
             decision = Integer.parseInt(JOptionPane.showInputDialog("***Desea Ingresar una nueva nota?***\n\n"
@@ -22,7 +23,7 @@ public class ColaLista {
 
             switch (decision) {
                 case 1:
-                    nota = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la nota"));
+                    nota = Float.parseFloat(JOptionPane.showInputDialog("Ingrese la nota"));
                     notas.NuevaNota(nota);
                     break;
                 case 2:
@@ -33,9 +34,8 @@ public class ColaLista {
                     break;
             }
         } while (salir);
-        Nodo nuevo = new Nodo(materia, notas);
+        nodo nuevo = new nodo(materia, notas);
         encolarLista(nuevo);
-        
     }
 
     boolean colaListaVacia() {
@@ -47,8 +47,8 @@ public class ColaLista {
         return aprobacion;
     }
 
-    void encolarLista (Nodo nuevo){
-        Nodo posicion;
+    void encolarLista (nodo nuevo){
+        nodo posicion;
         if (Punta == null) {
             Punta = nuevo;
             Fin = nuevo;
@@ -60,8 +60,8 @@ public class ColaLista {
         }
     }
 
-    Nodo desacolarLista() {
-        Nodo materia;
+    nodo desacolarLista() {
+        nodo materia;
         
         materia = Punta;
         Punta = Punta.getLiga();
