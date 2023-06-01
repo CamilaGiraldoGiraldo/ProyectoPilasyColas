@@ -2,9 +2,9 @@ public class nodo {
     // atributos
     public String Materia;
     public nodo Liga;
-    public PilaLista Notas;
+    public PilaNotas Notas;
 
-    public nodo(String materia, PilaLista notas) {
+    public nodo(String materia, PilaNotas notas) {
         Materia = materia;
         Liga = null;
         Notas = notas;
@@ -26,11 +26,11 @@ public class nodo {
         Liga = liga;
     }
 
-    public PilaLista getNotas() {
+    public PilaNotas getNotas() {
         return Notas;
     }
 
-    public void setNotas(PilaLista notas) {
+    public void setNotas(PilaNotas notas) {
         Notas = notas;
     }
    

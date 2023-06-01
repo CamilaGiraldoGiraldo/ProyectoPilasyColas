@@ -31,7 +31,7 @@ public class Pila {
         return B;
     }
 
-    void Apilar(Float d) {
+    void Apilar(int d) {
         Tope++;
         Vector[Tope] = d;
     }
