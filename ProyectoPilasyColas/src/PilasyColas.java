@@ -333,7 +333,6 @@ public class PilasyColas {
                     break;
                 case 4:
                     Lista Estudiantes = new Lista();
-                    ListaR Reportes = new ListaR();
                     boolean salire = true;
                     int des;
                     do {
@@ -348,13 +347,7 @@ public class PilasyColas {
                                 Estudiantes.NuevoEstudiante();
                                 break;
                             case 2:
-                                Reportes=Estudiantes.ReporteNotas();
-                                if (Reportes.Punta != null) {
-                                    JOptionPane.showMessageDialog(null, Reportes.Mostrar());
-                                } else {
-                                    JOptionPane.showMessageDialog(null, "No hay datos registrados...");
-                                }
-                                Reportes.VaciarLista();
+                            Estudiantes.ReporteNotas();
                                 break;
                             case 3:
                                 salire = false;

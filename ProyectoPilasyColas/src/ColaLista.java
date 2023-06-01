@@ -10,34 +10,30 @@ public class ColaLista {
     }
 
     void AgregarMateria() {
-        String materia = " ";
-        boolean salir = false;
+        String materia = JOptionPane.showInputDialog("Ingrese el nombre de las materia");
+        Pila notas = new Pila (4);
+        boolean salir = true;
         int decision;
         float nota;
-        PilaNotas notas = new PilaNotas(4);
-
-        materia = JOptionPane.showInputDialog("Ingrese el nombre de las materia: ");
-        while (salir == false && notas.PilaLLena()!=true) {
+        do {
             decision = Integer.parseInt(JOptionPane.showInputDialog("***Desea Ingresar una nueva nota?***\n\n"
                     + "1.Si, agregar una nueva nota\n"
                     + "2.No, regresar"));
 
             switch (decision) {
                 case 1:
-                            nota = Float.parseFloat(JOptionPane.showInputDialog("Ingrese la nota"));
-                            notas.Apilar(nota);
-                        break;
+                        nota = Float.parseFloat(JOptionPane.showInputDialog("Ingrese la nota"));
+                        notas.Apilar(nota);
+                    
+                    break;
                 case 2:
-                    salir = true;
+                    salir = false;
                     break;
                 default:
                     JOptionPane.showMessageDialog(null, "Ingrese una opcion valida");
                     break;
             }
-        }
-        if (notas.PilaLLena()==true){
-            JOptionPane.showMessageDialog(null, "La pila se ha llenado");
-        }
+        } while (salir);
         nodo nuevo = new nodo(materia, notas);
         encolarLista(nuevo);
     }
@@ -79,5 +75,4 @@ public class ColaLista {
             encolarLista(aux.desacolarLista());
         }
     }
-
 }

@@ -1,11 +1,28 @@
 public class NodoR {
-    String Reporte;
+    String nombreMateria;
+    float nota;
     NodoR liga;
 
-
-    public NodoR(String reporte) {
-        Reporte = reporte;
+    public NodoR(String nombreMateria, float nota) {
+        this.nombreMateria = nombreMateria;
+        this.nota = nota;
         this.liga = null;
+    }
+
+    public String getNombreMateria() {
+        return nombreMateria;
+    }
+
+    public void setNombreMateria(String nombreMateria) {
+        this.nombreMateria = nombreMateria;
+    }
+
+    public float getNota() {
+        return nota;
+    }
+
+    public void setNota(float nota) {
+        this.nota = nota;
     }
 
     public NodoR getLiga() {
@@ -14,14 +31,6 @@ public class NodoR {
 
     public void setLiga(NodoR liga) {
         this.liga = liga;
-    }
-
-    public String getReporte() {
-        return Reporte;
-    }
-
-    public void setReporte(String reporte) {
-        Reporte = reporte;
     }
    
 }

@@ -19,10 +19,10 @@ public class Lista {
         ColaLista Materias = new ColaLista();
         NodoG posicion;
 
-        nombre = JOptionPane.showInputDialog("Ingrese el/los nombre del Estudiante: ");
-        apellido = JOptionPane.showInputDialog("Ingrese los apellidos del Estudiante: ");
-        cedula = JOptionPane.showInputDialog("Ingrese el numero de identificacion del Estudiante: ");
-        carrera = JOptionPane.showInputDialog("Ingrese la carrera a la que pertenece el Estudiante: ");
+        nombre = JOptionPane.showInputDialog("Ingrese el/los nombre del Estudiante");
+        apellido = JOptionPane.showInputDialog("Ingrese los apellidos del Estudiante");
+        cedula = JOptionPane.showInputDialog("Ingrese el numer de identificacion del Estudiannte");
+        carrera = JOptionPane.showInputDialog("Ingrese la carrera a la que pertenece el Estudiante");
         do {
             respuesta = Integer.parseInt(JOptionPane.showInputDialog("***Que deseas hacer?***\n"
                     + "1.Agregar Materias al estudiante\n"
@@ -50,45 +50,61 @@ public class Lista {
             Fin = estudiante;
             posicion.setLiga(Fin);
         }
-    }
 
-    ListaR ReporteNotas(){
-        String Reporte = " ";
-        NodoG Principal = Punta;
-        ColaLista Aux= new ColaLista();
-        PilaNotas Notas = new PilaNotas(4);
-        PilaNotas aux = new PilaNotas(4);
-        nodo materia;
+    }
+    
+    public void ReporteNotas() {
+        String reporte = "";
+        String reporte2 = "";
+        String reporteF = "";
+        NodoG recorrer = Punta;
+        NodoL nota;
+        ColaLista aux = new ColaLista();
+        nodo paso;
+        PilaLista notas = new PilaLista();
+        PilaLista aux2 = new PilaLista();
         ListaR L = new ListaR();
-        float suma = 0;
-        float auxiliar=0;
-        if (Principal != null){
-            do{
-                Reporte = Reporte +  " cedula: " + Principal.getCedula() + " Nombre Completo: " + Principal.getNombre()
-                + " " + Principal.getApellido() + " Carrera: " + Principal.getCarrera();
-                if(Principal.getMaterias().colaListaVacia()== false){
-                    while(Principal.getMaterias().colaListaVacia() == false){
-                        materia=Principal.getMaterias().desacolarLista();
-                        if (materia.getNotas().PilaVacia()==false){
-                            Notas = materia.getNotas();
-                            while (Notas.PilaVacia()==false){
-                                auxiliar = Notas.Desapilar();
-                                suma= suma+ auxiliar;
-                                aux.Apilar(auxiliar);
-                            }
-                            Notas.Pasar_datos(aux);
-                            materia.setNotas(Notas);
-                        }
-                        Aux.encolarLista(materia);
-                        Reporte = Reporte + " " + " " + materia.getMateria() + " " + (suma/4);
-                     }
-                     Principal.setMaterias(Aux);
+        NodoR recorrer2;
+
+        if (Punta != null) {
+
+            do {
+                reporte = reporte + " cedula: " + recorrer.getCedula() + " Nombre completo : " + recorrer.getNombre()
+                        + " " + recorrer.getApellido() + " Carrera: " + recorrer.getCarrera() ;
+                if (recorrer.getMaterias().colaListaVacia() == false) {
+                    do {
+                        float suma = 0;
+                        int cont = 0;
+                        paso = recorrer.getMaterias().desacolarLista();
+                        do {
+                            nota = paso.getNotas().DesapilarLista();
+                            suma = suma + nota.getNota();
+                            cont++;
+                            notas.apilarLista(nota);
+                        } while (paso.getNotas().PilaListaVacia() == false);
+                        L.Agregar(paso.getMateria(), suma / cont);
+                        aux2.PasarDatosPilaLista(notas);
+                        paso.setNotas(aux2);
+                        aux.encolarLista(paso);
+                    }
+
+                    while (recorrer.getMaterias().colaListaVacia() == false);
+                    recorrer.setMaterias(aux);
                 }
-                Principal=Principal.getLiga();
-                L.Agregar(Reporte);
-                Reporte = " ";
-            }while (Principal != null);
+                recorrer = recorrer.getLiga();
+
+                if (L.Punta != null) {
+                    recorrer2 = L.Punta;
+                    do {
+                        reporte2 = reporte2 + " " + recorrer2.getNombreMateria() + " " +recorrer2.getNota();
+                        recorrer2 = recorrer2.getLiga();
+                    } while (recorrer2 != null);
+                }
+            } while (recorrer != null);
+            reporteF = reporteF + reporte + " \n  Reporte promedios \n"+ reporte2 + "\n";
         }
-        return L;
+
+        JOptionPane.showMessageDialog(null, reporteF);
+       
     }
 }
