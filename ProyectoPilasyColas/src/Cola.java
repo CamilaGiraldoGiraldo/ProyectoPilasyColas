@@ -220,7 +220,7 @@ public class Cola {
                 }
             }
             PasarDatos(Aux);
-            if(aprobacion == true){
+            if (aprobacion == true) {
                 Encolar(d);
             }
         }

@@ -5,10 +5,8 @@ public class NodoG {
     public NodoG Liga;
     public String Carrera;
     public ColaLista Materias;
-    
-    
 
-    public NodoG(String cedula, String nombre, String apellido,  String carrera, ColaLista materias) {
+    public NodoG(String cedula, String nombre, String apellido, String carrera, ColaLista materias) {
         Cedula = cedula;
         Nombre = nombre;
         Apellido = apellido;
@@ -64,5 +62,5 @@ public class NodoG {
     public void setMaterias(ColaLista materias) {
         Materias = materias;
     }
-    
+
 }

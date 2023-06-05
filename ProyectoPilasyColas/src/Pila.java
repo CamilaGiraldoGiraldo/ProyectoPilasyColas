@@ -284,7 +284,7 @@ public class Pila {
                     if (d == 2) {
                         if (P1.PilaVacia()) {
                             P1.Apilar(Desapilar());
-                        } else if (P1.getTope()== getTope() && !P1.PilaLLena()) {
+                        } else if (P1.getTope() == getTope() && !P1.PilaLLena()) {
                             P1.Apilar(Desapilar());
                         } else {
                             JOptionPane.showInternalMessageDialog(null, "Imposible mover...");
@@ -308,7 +308,7 @@ public class Pila {
                     if (d == 1) {
                         if (PilaVacia()) {
                             Apilar(P1.Desapilar());
-                        } else if (getTope()== P1.getTope() && !PilaLLena()) {
+                        } else if (getTope() == P1.getTope() && !PilaLLena()) {
                             Apilar(P1.Desapilar());
                         } else {
                             JOptionPane.showInternalMessageDialog(null, "Imposible mover...");
@@ -422,11 +422,11 @@ public class Pila {
                     } else {
                         d = Integer.parseInt(JOptionPane.showInputDialog(
                                 "Ingrese a la pila que desea mover el dato: \n 1.A la Pila 1\n2.A la Pila 2\n3.A la Pila"));
-                                valor = Desapilar();
+                        valor = Desapilar();
                         if (d == 2) {
                             if (P2.PilaVacia() == true) {
                                 P2.Apilar(valor);
-                            } else if (valor < P2.getTope() && P2.PilaLLena()==false) {
+                            } else if (valor < P2.getTope() && P2.PilaLLena() == false) {
                                 P2.Apilar(valor);
                             } else {
                                 JOptionPane.showInternalMessageDialog(null, "Imposible mover...");
@@ -434,7 +434,8 @@ public class Pila {
                             }
 
                         } else if (d == 3) {
-                            if (P3.PilaVacia() == true) {;
+                            if (P3.PilaVacia() == true) {
+                                ;
                                 P3.Apilar(valor);
                             } else if (valor < P3.getTope() && !P3.PilaLLena()) {
                                 P3.Apilar(valor);
@@ -454,11 +455,11 @@ public class Pila {
                     } else {
                         d = Integer.parseInt(JOptionPane.showInputDialog(
                                 "Ingrese a la pila que desea mover el dato: \n 1.A la Pila 1\n2.A la Pila 2\n3.A la Pila"));
-                                valor = P2.Desapilar();
+                        valor = P2.Desapilar();
                         if (d == 1) {
                             if (PilaVacia() == true) {
                                 Apilar(valor);
-                            } else if (valor < getTope() && PilaLLena()==false) {
+                            } else if (valor < getTope() && PilaLLena() == false) {
                                 Apilar(valor);
                             } else {
                                 JOptionPane.showInternalMessageDialog(null, "Imposible mover...");
@@ -485,11 +486,11 @@ public class Pila {
                     } else {
                         d = Integer.parseInt(JOptionPane.showInputDialog(
                                 "Ingrese a la pila que desea mover el dato: \n 1.A la Pila 1\n2.A la Pila 2\n3.A la Pila"));
-                                valor = P3.Desapilar();
+                        valor = P3.Desapilar();
                         if (d == 1) {
                             if (PilaVacia() == true) {
                                 Apilar(valor);
-                            } else if (valor < getTope() && PilaLLena()==false) {
+                            } else if (valor < getTope() && PilaLLena() == false) {
                                 Apilar(valor);
                             } else {
                                 JOptionPane.showInternalMessageDialog(null, "Imposible mover...");
@@ -498,14 +499,15 @@ public class Pila {
                         } else if (d == 2) {
                             if (P2.PilaVacia() == true) {
                                 P2.Apilar(valor);
-                            } else if (valor < P2.getTope() && P2.PilaLLena()==false) {;
+                            } else if (valor < P2.getTope() && P2.PilaLLena() == false) {
+                                ;
                                 P2.Apilar(valor);
                             } else {
                                 JOptionPane.showInternalMessageDialog(null, "Imposible mover...");
                                 P3.Apilar(valor);
                             }
-                        }else{
-                            
+                        } else {
+
                             JOptionPane.showMessageDialog(null, "Movido a la misma pila...");
                             P3.Apilar(valor);
                         }

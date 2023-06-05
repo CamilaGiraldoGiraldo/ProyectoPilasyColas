@@ -1,21 +1,22 @@
 public class ListaR {
     NodoR Punta;
     NodoR Fin;
+
     public ListaR() {
         Punta = null;
         Fin = null;
     }
 
-    public void Agregar (String Reporte) {
+    public void Agregar(String Reporte) {
         NodoR Nuevo = new NodoR(Reporte);
+        NodoR posicion;
         if (Punta == null) {
             Punta = Nuevo;
-            Fin=Nuevo;
-            Nuevo.setLiga(Punta);
-        } else {
-            Fin.setLiga(Nuevo);
-            Nuevo.setLiga(null);
             Fin = Nuevo;
+        } else {
+            posicion = Fin;
+            Fin = Nuevo;
+            posicion.setLiga(Fin);
         }
     }
 
@@ -25,16 +26,8 @@ public class ListaR {
         do {
             s = s + "|" + p.getReporte() + "| --> \n ";
             p = p.getLiga();
-        } while (p != Punta);
+        } while (p != null);
         return s;
     }
 
-    public void VaciarLista() {
-        NodoR p;
-        while (Punta != null) {
-            p = Punta;
-            Punta = p.getLiga();
-            p.setLiga(null);
-        }
-    }
 }

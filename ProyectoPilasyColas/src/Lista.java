@@ -9,7 +9,8 @@ public class Lista {
         Fin = null;
     }
 
-    public void NuevoEstudiante() {
+    public ListaR NuevoEstudiante(ListaR Reportes) {
+       
         boolean notas = true;
         int respuesta;
         String nombre;
@@ -19,6 +20,7 @@ public class Lista {
         ColaLista Materias = new ColaLista();
         NodoG posicion;
 
+        
         nombre = JOptionPane.showInputDialog("Ingrese el/los nombre del Estudiante: ");
         apellido = JOptionPane.showInputDialog("Ingrese los apellidos del Estudiante: ");
         cedula = JOptionPane.showInputDialog("Ingrese el numero de identificacion del Estudiante: ");
@@ -49,46 +51,46 @@ public class Lista {
             posicion = Fin;
             Fin = estudiante;
             posicion.setLiga(Fin);
-        }
-    }
 
-    ListaR ReporteNotas(){
+        }
         String Reporte = " ";
-        NodoG Principal = Punta;
-        ColaLista Aux= new ColaLista();
+        NodoG Principal = Fin;
+        ColaLista Aux = new ColaLista();
         PilaNotas Notas = new PilaNotas(4);
         PilaNotas aux = new PilaNotas(4);
         nodo materia;
-        ListaR L = new ListaR();
         float suma = 0;
-        float auxiliar=0;
-        if (Principal != null){
-            do{
-                Reporte = Reporte +  " cedula: " + Principal.getCedula() + " Nombre Completo: " + Principal.getNombre()
-                + " " + Principal.getApellido() + " Carrera: " + Principal.getCarrera();
-                if(Principal.getMaterias().colaListaVacia()== false){
-                    while(Principal.getMaterias().colaListaVacia() == false){
-                        materia=Principal.getMaterias().desacolarLista();
-                        if (materia.getNotas().PilaVacia()==false){
+        float auxiliar = 0;
+
+        Reporte = Reporte + " cedula: " + Principal.getCedula() + " Nombre Completo: " + Principal.getNombre()
+                        + " " + Principal.getApellido() + " Carrera: " + Principal.getCarrera();
+                if (Principal.getMaterias().colaListaVacia() == false) {
+                    while (Principal.getMaterias().colaListaVacia() == false) {
+                        materia = Principal.getMaterias().desacolarLista();
+                        if (materia.getNotas().PilaVacia() == false) {
                             Notas = materia.getNotas();
-                            while (Notas.PilaVacia()==false){
+                            suma = 0;
+                            while (Notas.PilaVacia() == false) {
                                 auxiliar = Notas.Desapilar();
-                                suma= suma+ auxiliar;
+                                suma = suma + auxiliar;
                                 aux.Apilar(auxiliar);
                             }
                             Notas.Pasar_datos(aux);
                             materia.setNotas(Notas);
                         }
                         Aux.encolarLista(materia);
-                        Reporte = Reporte + " " + " " + materia.getMateria() + " " + (suma/4);
-                     }
-                     Principal.setMaterias(Aux);
+                        if ((suma/4)>=3){
+                            Reporte = Reporte + " " + " " + materia.getMateria() + " " + (suma / 4)+ " Aprobado ";
+                        }else{
+                            Reporte = Reporte + " " + " " + materia.getMateria() + " " + (suma / 4) + " No Aprobado ";
+                        }
+                        
+                    }
+                    Principal.setMaterias(Aux);
+
                 }
-                Principal=Principal.getLiga();
-                L.Agregar(Reporte);
-                Reporte = " ";
-            }while (Principal != null);
-        }
-        return L;
+        Reportes.Agregar(Reporte);
+
+        return Reportes;
     }
 }

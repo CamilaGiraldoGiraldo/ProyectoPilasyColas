@@ -333,38 +333,31 @@ public class PilasyColas {
                     break;
                 case 4:
                     Lista Estudiantes = new Lista();
-                    ListaR Reportes = new ListaR();
+                    ListaR Reportes = new ListaR ();
                     boolean salire = true;
-                    int des;
+                    int des =0;
                     do {
-                        des = Integer.parseInt(JOptionPane
-                                .showInputDialog("***Menú Reporte Notas Estudiantes***\nQue deseaa realizar?\n\n"
-                                        + "1.Ingresar Estudiante al reporte\n"
-                                        + "2.Generar Reporte\n"
-                                        + "3.Salir"));
+                        des = Integer.parseInt(JOptionPane.showInputDialog("Que desea realizar?\n" +
+                                "1. Ingresar estudiantes\n" +
+                                "2. Mostrar Reportes\n" +
+                                "3. Salir"));
+                        switch (des){                        
+                           
 
-                        switch (des) {
                             case 1:
-                                Estudiantes.NuevoEstudiante();
+                                Reportes = Estudiantes.NuevoEstudiante(Reportes);
                                 break;
                             case 2:
-                                Reportes=Estudiantes.ReporteNotas();
-                                if (Reportes.Punta != null) {
-                                    JOptionPane.showMessageDialog(null, Reportes.Mostrar());
-                                } else {
-                                    JOptionPane.showMessageDialog(null, "No hay datos registrados...");
-                                }
-                                Reportes.VaciarLista();
+                                JOptionPane.showMessageDialog(null, Reportes.Mostrar()); 
                                 break;
                             case 3:
                                 salire = false;
                                 break;
                             default:
-                                JOptionPane.showMessageDialog(null, "Ingrese una opcion valida....");
+                                JOptionPane.showMessageDialog(null, "Ingrese una oopcion valida");
                                 break;
                         }
                     } while (salire);
-
                     break;
                 case 5:
 

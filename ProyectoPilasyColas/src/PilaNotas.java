@@ -33,6 +33,7 @@ public class PilaNotas {
         Tope++;
         Vector[Tope] = a;
     }
+
     float Desapilar() {
         float aux = Vector[Tope];
         Tope--;

@@ -33,5 +33,5 @@ public class nodo {
     public void setNotas(PilaNotas notas) {
         Notas = notas;
     }
-   
+
 }

@@ -2,7 +2,6 @@ public class NodoR {
     String Reporte;
     NodoR liga;
 
-
     public NodoR(String reporte) {
         Reporte = reporte;
         this.liga = null;
@@ -23,5 +22,5 @@ public class NodoR {
     public void setReporte(String reporte) {
         Reporte = reporte;
     }
-   
+
 }

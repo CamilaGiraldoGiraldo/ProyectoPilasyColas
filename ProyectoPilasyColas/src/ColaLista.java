@@ -11,32 +11,19 @@ public class ColaLista {
 
     void AgregarMateria() {
         String materia = " ";
-        boolean salir = false;
-        int decision;
         float nota;
         PilaNotas notas = new PilaNotas(4);
 
         materia = JOptionPane.showInputDialog("Ingrese el nombre de las materia: ");
-        while (salir == false && notas.PilaLLena()!=true) {
-            decision = Integer.parseInt(JOptionPane.showInputDialog("***Desea Ingresar una nueva nota?***\n\n"
-                    + "1.Si, agregar una nueva nota\n"
-                    + "2.No, regresar"));
+        while (notas.PilaLLena() != true) {
 
-            switch (decision) {
-                case 1:
-                            nota = Float.parseFloat(JOptionPane.showInputDialog("Ingrese la nota"));
-                            notas.Apilar(nota);
-                        break;
-                case 2:
-                    salir = true;
-                    break;
-                default:
-                    JOptionPane.showMessageDialog(null, "Ingrese una opcion valida");
-                    break;
+            nota = Float.parseFloat(JOptionPane.showInputDialog("Ingrese la nota"));
+            if (nota >= 0 && nota <= 5) {
+                notas.Apilar(nota);
+            } else {
+                JOptionPane.showMessageDialog(null, "Ingrese una nota valida...");
             }
-        }
-        if (notas.PilaLLena()==true){
-            JOptionPane.showMessageDialog(null, "La pila se ha llenado");
+
         }
         nodo nuevo = new nodo(materia, notas);
         encolarLista(nuevo);
@@ -51,7 +38,7 @@ public class ColaLista {
         return aprobacion;
     }
 
-    void encolarLista (nodo nuevo){
+    void encolarLista(nodo nuevo) {
         nodo posicion;
         if (Punta == null) {
             Punta = nuevo;
@@ -66,16 +53,19 @@ public class ColaLista {
 
     nodo desacolarLista() {
         nodo materia;
-        
-        materia = Punta;
-        Punta = Punta.getLiga();
-        materia.setLiga(null);
-        
+        if (!colaListaVacia()) {
+            materia = Punta;
+            Punta = Punta.getLiga();
+            materia.setLiga(null);
+        } else {
+            materia = null;
+        }
+
         return materia;
     }
 
-    void PasarColaLista (ColaLista aux){
-        while(aux.colaListaVacia() == false){
+    void PasarColaLista(ColaLista aux) {
+        while (aux.colaListaVacia() == false) {
             encolarLista(aux.desacolarLista());
         }
     }
